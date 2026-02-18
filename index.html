@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verity - The Verified Professional Network</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:       #C41E3A;
+      --red-dark:  #9B1530;
+      --red-light: #F9E8EB;
+      --red-mid:   #E8C5CB;
+      --bg:        #F3F2EE;
+      --white:     #FFFFFF;
+      --text:      #0A0A0A;
+      --text-2:    #4B4B4B;
+      --text-3:    #888888;
+      --border:    #E0DFDB;
+      --shadow:    0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.08);
+      --shadow-lg: 0 4px 20px rgba(0,0,0,.10);
+    }
+
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100;
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1128px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 52px;
+    }
+    .logo {
+      font-size: 24px; font-weight: 800; color: var(--red);
+      letter-spacing: -0.5px; text-decoration: none;
+    }
+    .logo span { color: var(--text); font-weight: 300; }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .btn-ghost {
+      padding: 8px 20px; border-radius: 20px; font-size: 14px; font-weight: 600;
+      color: var(--red); border: 1.5px solid var(--red);
+      background: transparent; cursor: pointer; text-decoration: none;
+      transition: all .15s;
+    }
+    .btn-ghost:hover { background: var(--red-light); }
+    .btn-solid {
+      padding: 8px 20px; border-radius: 20px; font-size: 14px; font-weight: 600;
+      color: var(--white); background: var(--red); border: none;
+      cursor: pointer; text-decoration: none; transition: all .15s;
+    }
+    .btn-solid:hover { background: var(--red-dark); }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 1128px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: center;
+      padding: 72px 24px 80px;
+    }
+    .hero-tag {
+      display: inline-block; background: var(--red-light); color: var(--red);
+      font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 20px; margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 48px; font-weight: 800; line-height: 1.1;
+      letter-spacing: -1.5px; margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: normal; color: var(--red); }
+    .hero p {
+      font-size: 18px; color: var(--text-2); line-height: 1.65;
+      margin-bottom: 36px; max-width: 460px;
+    }
+    .hero-cta { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .btn-hero {
+      padding: 14px 32px; border-radius: 28px; font-size: 16px; font-weight: 700;
+      color: var(--white); background: var(--red); border: none;
+      cursor: pointer; text-decoration: none; transition: all .2s;
+      box-shadow: 0 4px 14px rgba(196,30,58,.35);
+    }
+    .btn-hero:hover { background: var(--red-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(196,30,58,.4); }
+    .hero-note { font-size: 13px; color: var(--text-3); }
+
+    /* ── HERO VISUAL ── */
+    .hero-visual { position: relative; }
+    .profile-card {
+      background: var(--white); border-radius: 12px;
+      box-shadow: var(--shadow-lg); overflow: hidden;
+    }
+    .card-header { background: var(--red); height: 80px; position: relative; }
+    .card-avatar {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, #C41E3A, #FF6B6B);
+      border: 3px solid var(--white);
+      position: absolute; bottom: -28px; left: 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; font-weight: 700; color: white;
+    }
+    .verified-badge {
+      position: absolute; top: 8px; right: 12px;
+      background: var(--white); color: var(--red);
+      font-size: 11px; font-weight: 700; padding: 3px 10px;
+      border-radius: 12px; display: flex; align-items: center; gap: 4px;
+    }
+    .card-body { padding: 40px 20px 20px; }
+    .card-name { font-size: 18px; font-weight: 700; }
+    .card-title { font-size: 13px; color: var(--text-2); margin-bottom: 16px; }
+    .timeline { display: flex; flex-direction: column; gap: 10px; }
+    .timeline-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px; background: var(--bg); border-radius: 8px;
+    }
+    .timeline-dot {
+      width: 32px; height: 32px; border-radius: 6px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 14px;
+    }
+    .timeline-dot.verified { background: #E8F5E9; }
+    .timeline-dot.unverified { background: #FFF3E0; }
+    .timeline-info { flex: 1; }
+    .timeline-company { font-size: 13px; font-weight: 600; }
+    .timeline-period { font-size: 11px; color: var(--text-3); }
+    .timeline-status {
+      font-size: 10px; font-weight: 700; padding: 2px 7px;
+      border-radius: 8px; align-self: center;
+    }
+    .status-verified { background: #E8F5E9; color: #2E7D32; }
+    .status-pending { background: #FFF3E0; color: #E65100; }
+
+    .floating-card {
+      position: absolute; background: var(--white);
+      border-radius: 10px; box-shadow: var(--shadow-lg);
+      padding: 12px 16px; font-size: 12px; font-weight: 600;
+    }
+    .floating-intel {
+      right: -20px; top: 40px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .intel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); }
+    .floating-match { left: -20px; bottom: 40px; }
+    .match-score { font-size: 24px; font-weight: 800; color: var(--red); }
+    .match-label { font-size: 10px; color: var(--text-3); font-weight: 400; }
+
+    /* ── STATS ── */
+    .stats-bar {
+      background: var(--white); border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-inner {
+      max-width: 1128px; margin: 0 auto;
+      display: flex; justify-content: space-around;
+      padding: 28px 24px;
+    }
+    .stat { text-align: center; }
+    .stat-number { font-size: 28px; font-weight: 800; color: var(--red); letter-spacing: -1px; }
+    .stat-label { font-size: 13px; color: var(--text-2); margin-top: 2px; }
+
+    /* ── SECTION ── */
+    section { padding: 80px 24px; }
+    .section-inner { max-width: 1128px; margin: 0 auto; }
+    .section-tag {
+      font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--red); margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 36px; font-weight: 800; letter-spacing: -1px;
+      margin-bottom: 16px; line-height: 1.15;
+    }
+    .section-sub { font-size: 17px; color: var(--text-2); max-width: 560px; line-height: 1.6; }
+
+    /* ── PILLARS ── */
+    .pillars { background: var(--white); }
+    .pillars-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 2px; background: var(--border);
+      border-radius: 16px; overflow: hidden;
+      margin-top: 48px;
+      box-shadow: var(--shadow-lg);
+    }
+    .pillar {
+      background: var(--white); padding: 40px;
+      transition: background .2s;
+    }
+    .pillar:hover { background: #FAFAFA; }
+    .pillar-num {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--red); margin-bottom: 16px;
+    }
+    .pillar-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--red-light); display: flex; align-items: center;
+      justify-content: center; font-size: 22px; margin-bottom: 20px;
+    }
+    .pillar h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+    .pillar p { font-size: 15px; color: var(--text-2); line-height: 1.65; }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: var(--bg); }
+    .steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 24px; margin-top: 48px; position: relative;
+    }
+    .steps::before {
+      content: ''; position: absolute;
+      top: 28px; left: 10%; right: 10%; height: 2px;
+      background: linear-gradient(90deg, var(--red), var(--red-mid));
+      z-index: 0;
+    }
+    .step { text-align: center; position: relative; z-index: 1; }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--red); color: var(--white);
+      font-size: 20px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; box-shadow: 0 4px 14px rgba(196,30,58,.35);
+    }
+    .step h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .step p { font-size: 14px; color: var(--text-2); line-height: 1.6; }
+
+    /* ── EXCHANGE ── */
+    .exchange-section { background: var(--white); }
+    .exchange-grid {
+      display: grid; grid-template-columns: 1fr 80px 1fr;
+      gap: 0; align-items: center; margin-top: 48px;
+    }
+    .exchange-side {
+      background: var(--bg); border-radius: 16px;
+      padding: 32px; border: 1px solid var(--border);
+    }
+    .exchange-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--text-3); margin-bottom: 16px;
+    }
+    .exchange-company {
+      font-size: 18px; font-weight: 700; margin-bottom: 8px;
+    }
+    .exchange-role { font-size: 14px; color: var(--text-2); margin-bottom: 20px; }
+    .exchange-q {
+      background: var(--white); border-radius: 10px; padding: 14px;
+      font-size: 14px; color: var(--text); border: 1px solid var(--border);
+      margin-bottom: 8px; line-height: 1.5;
+    }
+    .exchange-q strong { color: var(--red); font-weight: 600; }
+    .exchange-arrow {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 6px; justify-content: center;
+    }
+    .arrow-icon { font-size: 28px; color: var(--red); }
+    .arrow-label {
+      font-size: 10px; font-weight: 700; color: var(--red);
+      letter-spacing: 1px; text-transform: uppercase;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+      color: var(--white); text-align: center;
+    }
+    .cta-section .section-title { color: var(--white); }
+    .cta-section p { color: rgba(255,255,255,.85); font-size: 18px; margin: 0 auto 40px; max-width: 520px; line-height: 1.6; }
+    .waitlist-form {
+      display: flex; gap: 0; max-width: 440px; margin: 0 auto;
+      background: var(--white); border-radius: 32px; overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,.2);
+    }
+    .waitlist-form input {
+      flex: 1; padding: 16px 24px; border: none; outline: none;
+      font-size: 15px; font-family: inherit; background: transparent;
+    }
+    .waitlist-form button {
+      padding: 16px 28px; background: var(--red); color: var(--white);
+      border: none; font-size: 15px; font-weight: 700; cursor: pointer;
+      font-family: inherit; border-radius: 0 32px 32px 0;
+      transition: background .15s;
+    }
+    .waitlist-form button:hover { background: var(--red-dark); }
+    .cta-note { font-size: 13px; color: rgba(255,255,255,.65); margin-top: 14px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text); color: rgba(255,255,255,.6);
+      padding: 40px 24px;
+    }
+    .footer-inner {
+      max-width: 1128px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-logo { font-size: 20px; font-weight: 800; color: var(--red); }
+    .footer-links { display: flex; gap: 24px; font-size: 13px; }
+    .footer-links a { color: rgba(255,255,255,.6); text-decoration: none; }
+    .footer-links a:hover { color: var(--white); }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; padding: 40px 20px; }
+      .hero h1 { font-size: 34px; }
+      .hero-visual { display: none; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .steps::before { display: none; }
+      .exchange-grid { grid-template-columns: 1fr; }
+      .exchange-arrow { flex-direction: row; }
+      .stats-inner { flex-wrap: wrap; gap: 24px; }
+      .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">Verity<span>.</span></a>
+    <div class="nav-links">
+      <a href="#" class="btn-ghost">Sign In</a>
+      <a href="#waitlist" class="btn-solid">Join the Waitlist</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <span class="hero-tag">🔴 The Truth-First Professional Network</span>
+    <h1>Your career,<br /><em>verified.</em><br />No performance.</h1>
+    <p>Verity replaces self-reported profiles and anonymous reviews with verified employment records and a mandatory intel exchange. The professional network that actually tells you the truth.</p>
+    <div class="hero-cta">
+      <a href="#waitlist" class="btn-hero">Request Early Access</a>
+      <span class="hero-note">No spam. Cancel anytime.</span>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="profile-card">
+      <div class="card-header">
+        <div class="card-avatar">M</div>
+        <div class="verified-badge">✓ Verified Profile</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Marko Horvat</div>
+        <div class="card-title">Senior HR Manager · Zagreb, Croatia</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot verified">🏢</div>
+            <div class="timeline-info">
+              <div class="timeline-company">Retail Corp d.o.o.</div>
+              <div class="timeline-period">Jan 2021 - Present · 4 yrs</div>
+            </div>
+            <span class="timeline-status status-verified">✓ Verified</span>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot verified">🏗️</div>
+            <div class="timeline-info">
+              <div class="timeline-company">BuildCo Group</div>
+              <div class="timeline-period">Mar 2018 - Dec 2020 · 2 yrs</div>
+            </div>
+            <span class="timeline-status status-verified">✓ Verified</span>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot unverified">⚡</div>
+            <div class="timeline-info">
+              <div class="timeline-company">StartupXYZ</div>
+              <div class="timeline-period">Jun 2016 - Feb 2018 · 1 yr</div>
+            </div>
+            <span class="timeline-status status-pending">Pending</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="floating-card floating-intel">
+      <div class="intel-dot"></div>
+      <span>3 intel requests waiting</span>
+    </div>
+    <div class="floating-card floating-match">
+      <div class="match-score">94%</div>
+      <div class="match-label">Transparency Score</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Verified employment records</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">0</div>
+      <div class="stat-label">Anonymous unverified claims</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">2-way</div>
+      <div class="stat-label">Mandatory intel exchange</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">All</div>
+      <div class="stat-label">Industries & workforce tiers</div>
+    </div>
+  </div>
+</div>
+
+<!-- PILLARS -->
+<section class="pillars">
+  <div class="section-inner">
+    <div class="section-tag">Built on four pillars</div>
+    <h2 class="section-title">Why Verity is different</h2>
+    <p class="section-sub">Every other platform is built on trust you have to assume. Verity is built on truth you can verify.</p>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-num">Pillar 01</div>
+        <div class="pillar-icon">🔐</div>
+        <h3>Universal Verification</h3>
+        <p>You cannot claim a workplace on Verity. Entry requires Proof of Presence — work email handshake, peer vouching, or document confirmation. Every timeline is 100% accurate.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">Pillar 02</div>
+        <div class="pillar-icon">🔄</div>
+        <h3>The Insider Loop</h3>
+        <p>Verity is a living intel exchange. To access the truth about Company B, you must share the truth about Company A. Information sharing is not optional — it is a reciprocal obligation.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">Pillar 03</div>
+        <div class="pillar-icon">⚡</div>
+        <h3>Performance & Responsiveness</h3>
+        <p>Intel Sources are held to a standard. If you are listed as a source for a company, you must respond within a set timeframe — or lose access to the platform's benefits.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">Pillar 04</div>
+        <div class="pillar-icon">👁️</div>
+        <h3>Radical Transparency</h3>
+        <p>No personal branding. No performative positivity. Verity is a marketplace of honest feedback where the only incentive is to help the next person avoid a bad fit — or find a great one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="section-inner">
+    <div class="section-tag">How it works</div>
+    <h2 class="section-title">Simple. Honest. Reciprocal.</h2>
+    <p class="section-sub">Four steps from verified profile to trusted insider network.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Prove your presence</h4>
+        <p>Verify every employer you've worked for using work email, peer vouching, or documentation.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Become an Intel Source</h4>
+        <p>Your verified history makes you a trusted insider for every company you've worked at.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Give to get</h4>
+        <p>To access insider intel about a company you're interested in, you answer questions about one you've left.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Make better decisions</h4>
+        <p>Walk into every interview, negotiation, and career decision with verified inside knowledge.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXCHANGE -->
+<section class="exchange-section">
+  <div class="section-inner">
+    <div class="section-tag">The Intel Exchange</div>
+    <h2 class="section-title">Real questions. Verified answers.</h2>
+    <p class="section-sub">The only place where honest workplace intel is a structural requirement, not a lucky find.</p>
+    <div class="exchange-grid">
+      <div class="exchange-side">
+        <div class="exchange-label">📤 You share about</div>
+        <div class="exchange-company">Retail Corp d.o.o.</div>
+        <div class="exchange-role">Where you worked 2019-2022</div>
+        <div class="exchange-q"><strong>Q:</strong> How does management handle performance reviews? Are they fair and consistent?</div>
+        <div class="exchange-q"><strong>Q:</strong> What is the real reason people leave this company?</div>
+      </div>
+      <div class="exchange-arrow">
+        <div class="arrow-icon">⇄</div>
+        <div class="arrow-label">Exchange</div>
+      </div>
+      <div class="exchange-side">
+        <div class="exchange-label">📥 You receive about</div>
+        <div class="exchange-company">TechStartup d.o.o.</div>
+        <div class="exchange-role">Where you want to work next</div>
+        <div class="exchange-q"><strong>A:</strong> Leadership is transparent but slow to promote internally. Expect 2-3 years before advancement.</div>
+        <div class="exchange-q"><strong>A:</strong> Benefits are excellent but office culture is remote-hostile despite the stated policy.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="waitlist">
+  <div class="section-inner">
+    <h2 class="section-title">The professional network you actually deserve.</h2>
+    <p>Join the waitlist. Be among the first to build a verified profile and access honest intel about where you want to work next.</p>
+    <div class="waitlist-form">
+      <input type="email" placeholder="Your work email address" />
+      <button>Get Early Access</button>
+    </div>
+    <div class="cta-note">Free to join. No spam. Launching 2026.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Verity.</div>
+    <div class="footer-links">
+      <a href="#">About</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Contact</a>
+    </div>
+    <div style="font-size:13px;">© 2026 Verity. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
