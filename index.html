@@ -951,7 +951,7 @@ body.on-landing{padding-bottom:0;}
     </div>
 
     <!-- Thread 2 -->
-    <div class="intel-post" data-category="culture">
+    <div class="intel-post" data-category="salary">
       <span class="intel-tag">Salary</span>
       <div class="intel-q" onclick="toggleAnswers('ia2')">Senior Data Scientist at QuantumAI — is €130k realistic or just bait?</div>
       <div class="intel-meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> 9 answers · All verified · 4 hours ago</div>
@@ -987,7 +987,7 @@ body.on-landing{padding-bottom:0;}
     </div>
 
     <!-- Thread 4 - Locked -->
-    <div class="intel-post" data-category="culture">
+    <div class="intel-post" data-category="interview">
       <span class="intel-tag">Interview</span>
       <div class="intel-q">GrowthLabs interview process — what are the actual questions in the final round?</div>
       <div class="intel-meta">8 answers · All verified · 1 day ago</div>
@@ -1002,7 +1002,7 @@ body.on-landing{padding-bottom:0;}
     </div>
 
     <!-- Thread 5 -->
-    <div class="intel-post" data-category="culture">
+    <div class="intel-post" data-category="salary">
       <span class="intel-tag">Salary</span>
       <div class="intel-q" onclick="toggleAnswers('ia5')">Does DataFlow actually pay market rate or are they squeezing engineers?</div>
       <div class="intel-meta">11 answers · All verified · 2 days ago</div>
@@ -1016,7 +1016,7 @@ body.on-landing{padding-bottom:0;}
           Got a 20% raise by having a competing offer. Before that, 3% annual increases "for performance." Don't be loyal without data.
         </div>
       </div>
-      <div style="display:flex;gap:8px;margin-top:8px;"><div class="show-more-btn" onclick="toggleAnswers('ia5')">Show 9 </div><button class="btn btn-outline btn-xs" onclick="addIntelAnswer(this.closest('.intel-post'))">Add your answer</button></div>
+      <div style="display:flex;gap:8px;margin-top:8px;"><div class="show-more-btn" onclick="toggleAnswers('ia5')">Show 9 more answers</div><button class="btn btn-outline btn-xs" onclick="addIntelAnswer(this.closest('.intel-post'))">Add your answer</button></div>
     </div>
 
     <!-- Thread 6 - Locked -->
@@ -2173,6 +2173,280 @@ function onSearch(v){
   drop.innerHTML=html2;
 }
 
+// ── MODAL OPEN/CLOSE ──
+function openModal(id,desc){
+  const el=document.getElementById('modal-'+id);
+  if(!el)return;
+  el.classList.add('open');
+  if(id==='unlock'&&desc){const d=document.getElementById('unlock-desc');if(d)d.textContent='Share your experience to unlock insider answers about: '+desc;}
+  setTimeout(()=>{const first=el.querySelector('input:not([readonly]),textarea,select');if(first)first.focus();},100);
+}
+function closeModal(id){
+  const el=document.getElementById('modal-'+id);
+  if(el)el.classList.remove('open');
+}
+
+// ── FEED INTERACTIONS ──
+function toggleLike(postId){
+  const btn=document.getElementById('lb-'+postId);
+  if(!btn)return;
+  const lc=document.getElementById('lc-'+postId);
+  const liked=btn.classList.contains('liked');
+  btn.classList.toggle('liked',!liked);
+  if(lc){const n=parseInt(lc.textContent)||0;lc.textContent=liked?n-1:n+1;}
+  toast(liked?'Removed from useful':'Marked as useful!');
+}
+function toggleFollow(btn){
+  const on=btn.classList.contains('following');
+  if(on){btn.classList.remove('following','btn-primary');btn.classList.add('btn-ghost');btn.textContent='Follow';toast('Unfollowed');}
+  else{btn.classList.add('following','btn-primary');btn.classList.remove('btn-ghost');btn.textContent='Following ✓';toast('Following!');}
+}
+function toggleComments(id){
+  const el=document.getElementById(id);if(!el)return;
+  el.classList.toggle('open');
+  if(el.classList.contains('open')){const inp=el.querySelector('.comment-input');if(inp)inp.focus();}
+}
+function toggleAnswers(id){
+  const el=document.getElementById(id);if(!el)return;
+  el.classList.toggle('open');
+  // Update the show-more-btn text
+  const btn=el.previousElementSibling?.nextElementSibling?.querySelector('.show-more-btn')
+    ||el.closest('.intel-post')?.querySelector('.show-more-btn');
+  if(btn){btn.textContent=el.classList.contains('open')?'Hide answers':btn.dataset.label||'Show more answers';}
+}
+function connectBtn(btn){
+  if(btn.classList.contains('sent')||btn.classList.contains('connected'))return;
+  btn.classList.add('sent');
+  btn.innerHTML='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Sent';
+  btn.disabled=true;
+  toast('Connection request sent!');
+}
+function postComment(input,sectionId){
+  const txt=input.value.trim();if(!txt)return;
+  const sec=document.getElementById(sectionId);if(!sec)return;
+  const row=sec.querySelector('.comment-input-row');
+  const div=document.createElement('div');
+  div.className='comment';
+  div.innerHTML=`<div class="av av32" style="background:linear-gradient(135deg,#C41E3A,#8B0000);flex-shrink:0;">AM</div><div class="comment-bubble"><div class="comment-author">Alex Mercer</div>${txt.replace(/</g,'&lt;')}</div>`;
+  if(row)sec.insertBefore(div,row);
+  input.value='';
+  toast('Comment posted!');
+}
+function postCommentBtn(btn,sectionId){
+  const row=btn.closest('.comment-input-row');
+  const inp=row?row.querySelector('.comment-input'):null;
+  if(inp)postComment(inp,sectionId);
+}
+function sharePost(text){
+  if(navigator.share){navigator.share({title:'Verity — '+text,url:window.location.href}).catch(()=>{});}
+  else{toast('Link copied!');}
+}
+function loadMorePosts(){
+  const btn=document.querySelector('[onclick="loadMorePosts()"]');
+  if(btn){btn.closest('div').innerHTML='<p style="font-size:13px;color:var(--muted);text-align:center;padding:8px 0;">You\'re all caught up! 🎉</p>';}
+  toast('No more posts right now');
+}
+function submitPost(){
+  const ta=document.querySelector('#modal-compose textarea');
+  const sel=document.querySelector('#modal-compose select');
+  if(!ta||!ta.value.trim()){toast('Please write something first');return;}
+  const category=sel?sel.value:'Intel';
+  closeModal('compose');
+  // Prepend post to feed
+  const feedEl=document.getElementById('feed-posts');
+  const newPost=document.createElement('div');
+  newPost.className='feed-post';
+  newPost.style.background='linear-gradient(180deg,#fff9f9,#fff)';
+  const id='p'+Date.now();
+  newPost.innerHTML=`<div class="post-header"><div class="av av48" style="background:linear-gradient(135deg,#C41E3A,#8B0000);">AM</div><div style="flex:1;min-width:0;"><div><span class="post-name">Alex Mercer</span></div><div class="post-meta">Product Lead · Verity <span class="pill pill-blue" style="font-size:10px;vertical-align:middle;">${category}</span></div><div class="post-time">Just now</div></div></div><div class="post-body">${ta.value.trim().replace(/</g,'&lt;').replace(/\n/g,'<br>')}</div><div class="post-actions"><div class="pact" id="lb-${id}" onclick="toggleLike('${id}')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> <span>Useful</span></div><div class="pact" onclick="sharePost('your post')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> <span>Share</span></div></div>`;
+  const firstPost=feedEl.querySelector('.feed-post');
+  if(firstPost)feedEl.insertBefore(newPost,firstPost);
+  ta.value='';
+  toast('Post published!');
+}
+
+// ── JOBS ──
+function applyJob(btn){
+  // Context from job card (feed) or job detail view
+  const jobCard=btn.closest('.job-card');
+  let title='',co='';
+  if(jobCard){
+    title=jobCard.querySelector('.job-title')?.textContent||'';
+    co=(jobCard.querySelector('.job-co')?.textContent||'').split('·')[0].trim();
+  }else{
+    title=document.querySelector('#view-job h2')?.textContent||'';
+    const subEl=document.querySelector('#view-job [style*="cursor:pointer"]');
+    co=subEl?(subEl.textContent||'').split('·')[0].trim():'';
+  }
+  const t=document.getElementById('apply-job-title');
+  const c=document.getElementById('apply-company');
+  if(t)t.textContent=title||'Apply for Position';
+  if(c)c.textContent='at '+(co||'this company');
+  openModal('apply');
+}
+function saveJob(btn){
+  const saved=btn.classList.contains('saved');
+  if(saved){
+    btn.classList.remove('saved');
+    btn.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg> Save';
+    toast('Job removed from saved');
+  }else{
+    btn.classList.add('saved');
+    btn.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="#C41E3A" stroke="#C41E3A" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg> Saved ✓';
+    toast('Job saved!');
+  }
+}
+function submitApplication(){
+  const cover=document.getElementById('apply-cover')?.value?.trim();
+  closeModal('apply');
+  if(cover)document.getElementById('apply-cover').value='';
+  toast('Application submitted! Hiring manager notified via Verity.');
+}
+function saveJobAlerts(){
+  const kw=document.getElementById('alert-keywords')?.value?.trim();
+  if(!kw){toast('Please enter at least one keyword');return;}
+  closeModal('jobalerts');
+  toast('Job alerts set for: "'+kw+'"');
+}
+
+// ── MODALS: SALARY / UNLOCK / PROFILE / SHARE ──
+function submitSalary(){
+  const inputs=document.querySelectorAll('#modal-salary input');
+  if(!inputs[0]?.value?.trim()){toast('Please enter your job title');return;}
+  if(!inputs[1]?.value?.trim()){toast('Please enter the company name');return;}
+  if(!inputs[2]?.value?.trim()){toast('Please enter your salary');return;}
+  closeModal('salary');
+  inputs.forEach(i=>i.value='');
+  toast('Salary data submitted anonymously! Thank you 🙏');
+}
+function submitUnlock(){
+  const ta=document.querySelector('#modal-unlock textarea');
+  if(!ta||!ta.value.trim()){toast('Please share your experience first');return;}
+  closeModal('unlock');
+  ta.value='';
+  // Reveal all hidden answers in the page
+  document.querySelectorAll('.hidden-answers:not(.open)').forEach(el=>{el.classList.add('open');});
+  document.querySelectorAll('.show-more-btn').forEach(el=>{el.textContent='Hide answers';});
+  toast('Answer submitted! Insider answers unlocked.');
+}
+function saveProfile(){
+  const name=document.getElementById('edit-name')?.value?.trim();
+  const headline=document.getElementById('edit-headline')?.value?.trim();
+  const loc=document.getElementById('edit-location')?.value?.trim();
+  if(name){
+    const hl=document.querySelector('#view-myprofile .profile-hl');if(hl)hl.textContent=name;
+    document.querySelectorAll('.lsb-name').forEach(el=>el.textContent=name);
+    document.querySelectorAll('.nav-me-av').forEach(el=>el.textContent=name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase());
+  }
+  if(headline){const sub=document.querySelector('#view-myprofile .profile-sub');if(sub)sub.textContent=headline+(loc?(' · '+loc):'');}
+  closeModal('editprofile');
+  toast('Profile updated!');
+}
+function openShareModal(name,url){
+  const desc=document.getElementById('share-desc');
+  const urlEl=document.getElementById('share-url');
+  if(desc)desc.textContent='Share '+name+'\'s Verity profile';
+  if(urlEl)urlEl.value=url||window.location.href;
+  openModal('share');
+}
+function shareVia(platform){
+  const url=encodeURIComponent(document.getElementById('share-url')?.value||window.location.href);
+  const msg=encodeURIComponent('Check out this Verity profile: '+decodeURIComponent(url));
+  const map={
+    linkedin:'https://www.linkedin.com/sharing/share-offsite/?url='+url,
+    twitter:'https://twitter.com/intent/tweet?text='+msg,
+    whatsapp:'https://wa.me/?text='+msg,
+    email:'mailto:?subject=Verity+Profile&body='+msg
+  };
+  if(map[platform])window.open(map[platform],'_blank','noopener,noreferrer');
+  toast('Opening '+platform+'...');
+}
+function copyShareLink(){
+  const url=document.getElementById('share-url')?.value||window.location.href;
+  if(navigator.clipboard){navigator.clipboard.writeText(url).then(()=>toast('Link copied to clipboard!')).catch(()=>toast('Copy: '+url));}
+  else{toast('Link: '+url);}
+}
+
+// ── SALARY BENCHMARKS FILTER ──
+function filterSalaries(){
+  const role=document.getElementById('salary-role')?.value||'';
+  const loc=document.getElementById('salary-location')?.value||'';
+  const exp=document.getElementById('salary-exp')?.value||'';
+  const cards=document.querySelectorAll('#salary-results .salary-bench-card');
+  cards.forEach(card=>{
+    const meta=(card.querySelector('.sbc-meta')?.textContent||'').toLowerCase();
+    const roleText=(card.querySelector('.sbc-role')?.textContent||'').toLowerCase();
+    const locMatch=!loc||meta.includes(loc.toLowerCase().replace('-',' '));
+    const expMatch=!exp;// static data — show all by default when filtered
+    let roleMatch=true;
+    if(role==='pm')roleMatch=roleText.includes('product')||roleText.includes('pm');
+    else if(role==='eng')roleMatch=roleText.includes('engineer')||roleText.includes('dev')||roleText.includes('front');
+    else if(role==='design')roleMatch=roleText.includes('design');
+    else if(role==='data')roleMatch=roleText.includes('data');
+    else if(role==='marketing')roleMatch=roleText.includes('market');
+    card.style.display=(locMatch&&roleMatch)?'':'none';
+  });
+  toast('Salary filter applied');
+}
+
+// ── NOTIFICATIONS ──
+function acceptConnection(btn,name){
+  const activity=btn.closest('.activity');
+  if(activity){
+    activity.querySelector('.notif-dot')?.remove();
+    activity.style.background='';
+    const actionRow=btn.closest('[style*="gap:8px"]');
+    if(actionRow){actionRow.outerHTML=`<div class="pill pill-green" style="margin-top:4px;font-size:11px;">✓ Connected with ${name}</div>`;}
+  }
+  toast('Connected with '+name+'!');
+}
+function ignoreRequest(btn){
+  const activity=btn.closest('.activity');
+  if(activity){activity.style.opacity='0';activity.style.transition='opacity .3s';setTimeout(()=>activity.remove(),300);}
+  toast('Request dismissed');
+}
+
+// ── GROUPS DATA ──
+const groups={
+  'pm-eu':{
+    name:'Product Managers EU',
+    members:'4,820',
+    desc:'The largest verified PM community in Europe. Salary benchmarks, job leads, and honest company intel — all from verified product professionals.',
+    posts:[
+      {author:'Sarah Chen',role:'Sr. PM · Nexora',time:'2h ago',text:'Anyone navigating a salary negotiation for a Principal PM role in Amsterdam? Happy to share the market data I have.'},
+      {author:'Ana Kowalski',role:'Marketing Dir · GrowthLabs',time:'4h ago',text:'GrowthLabs is hiring a Growth PM. 9.2 Verity Score, transparent salaries, fully hybrid. DM me if interested.'},
+      {author:'Filip Kral',role:'Eng Manager · Nexora',time:'1d ago',text:'Reminder: quarterly manager ratings are now public on Verity. Check yours before your next 1:1. It matters.'}
+    ]
+  },
+  'saas-founders':{
+    name:'SaaS Founders Network',
+    members:'2,140',
+    desc:'Bootstrapped and VC-backed founders building SaaS in Europe. Revenue, hiring, and culture topics — all verified.',
+    posts:[
+      {author:'James O\'Brien',role:'CEO · StartupHub',time:'1h ago',text:'Hiring fast is the wrong goal. Hiring right is. Anyone who disagrees hasn\'t dealt with a bad cultural fit at 50 people.'},
+      {author:'David Park',role:'Data Scientist · QuantumAI',time:'6h ago',text:'The Verity score transparency is changing how we recruit. Candidates ask about our score in first calls now.'},
+      {author:'Elena Russo',role:'Sr. UX · CreativeWorks',time:'2d ago',text:'Design hiring tip: ask to see the last 3 design decisions they overruled and why. The answer tells you everything.'}
+    ]
+  }
+};
+
+// ── FEED TABS ──
+(function(){
+  document.getElementById('feedTabs')?.querySelectorAll('.ftab').forEach(tab=>{
+    tab.addEventListener('click',function(){
+      document.querySelectorAll('#feedTabs .ftab').forEach(t=>t.classList.remove('active'));
+      this.classList.add('active');
+      toast('Showing: '+this.textContent);
+    });
+  });
+  document.getElementById('jobTabs')?.querySelectorAll('.ftab').forEach(tab=>{
+    tab.addEventListener('click',function(){
+      document.querySelectorAll('#jobTabs .ftab').forEach(t=>t.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+})();
+
 // Keyboard support for role="button" elements and Escape to close modals
 document.addEventListener('keydown',e=>{
   if((e.key==='Enter'||e.key===' ')&&e.target.getAttribute('role')==='button'){
@@ -2180,7 +2454,7 @@ document.addEventListener('keydown',e=>{
     e.target.click();
   }
   if(e.key==='Escape'){
-    ['compose','intel','unlock','salary','message'].forEach(id=>{
+    ['compose','intel','unlock','salary','message','jobalerts','editprofile','apply','group','share'].forEach(id=>{
       const m=document.getElementById('modal-'+id);
       if(m&&m.classList.contains('open'))closeModal(id);
     });
