@@ -1359,6 +1359,14 @@ function onSearch(v){
   drop.classList.toggle('open',v.length>0);
 }
 
+// Keyboard support for role="button" elements
+document.addEventListener('keydown',e=>{
+  if((e.key==='Enter'||e.key===' ')&&e.target.getAttribute('role')==='button'){
+    e.preventDefault();
+    e.target.click();
+  }
+});
+
 // Init
 initStars();
 // Start on landing page
