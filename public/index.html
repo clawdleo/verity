@@ -414,10 +414,10 @@ body.on-landing{padding-bottom:0;}
 .mgr-axis-label{font-size:12px;color:var(--muted);width:160px;flex-shrink:0;}
 .mgr-dist-bar{flex:1;height:18px;display:flex;border-radius:4px;overflow:hidden;min-width:120px;}
 .mgr-dist-seg{height:100%;transition:width .5s ease;}
-.mgr-dist-exc{background:#1a6329;}
-.mgr-dist-good{background:#4ade80;}
-.mgr-dist-avg{background:#fbbf24;}
-.mgr-dist-poor{background:#ef4444;}
+.mgr-dist-exc{background:#1a1a1a;}
+.mgr-dist-good{background:#666;}
+.mgr-dist-avg{background:#aaa;}
+.mgr-dist-poor{background:#ddd;}
 .mgr-axis-score{font-size:12px;font-weight:700;width:28px;color:var(--text);flex-shrink:0;}
 .mgr-legend{display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap;}
 .mgr-leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);}
@@ -1754,14 +1754,13 @@ function showCompany(key){
   
   const dimsHtml=dimsArr.map(d=>{
     const pct=(d.v/10*100).toFixed(0);
-    const col=d.v>=8?'var(--green)':d.v>=7?'var(--amber)':'var(--red)';
-    return `<div class="ci-dim-row"><div class="ci-dim-label">${d.l}</div><div class="ci-dim-bar-wrap"><div class="ci-dim-fill" style="width:${pct}%;background:${col};"></div></div><div class="ci-dim-val" style="color:${col};">${d.v.toFixed(1)}</div></div>`;
+    return `<div class="ci-dim-row"><div class="ci-dim-label">${d.l}</div><div class="ci-dim-bar-wrap"><div class="ci-dim-fill" style="width:${pct}%;background:var(--red);"></div></div><div class="ci-dim-val">${d.v.toFixed(1)}</div></div>`;
   }).join('');
   
   // Manager ratings
   let mgrHtml='';
   if(c.mgr){
-    const legend=`<div class="mgr-legend"><div class="mgr-leg-item"><div class="mgr-leg-dot" style="background:#1a6329;"></div>Excellent</div><div class="mgr-leg-item"><div class="mgr-leg-dot" style="background:#4ade80;"></div>Good</div><div class="mgr-leg-item"><div class="mgr-leg-dot" style="background:#fbbf24;"></div>Average</div><div class="mgr-leg-item"><div class="mgr-leg-dot" style="background:#ef4444;"></div>Poor</div></div>`;
+    const legend=`<div class="mgr-legend"><div class="mgr-leg-item"><div class="mgr-leg-dot" style="background:#1a1a1a;"></div>Excellent</div><div class="mgr-leg-item"><div class="mgr-leg-dot" style="background:#666;"></div>Good</div><div class="mgr-leg-item"><div class="mgr-leg-dot" style="background:#aaa;"></div>Average</div><div class="mgr-leg-item"><div class="mgr-leg-dot" style="background:#ddd;"></div>Poor</div></div>`;
     const rows=c.mgr.axes.map((ax,i)=>{
       const d=c.mgr.dist[i];const sc=c.mgr.scores[i];
       const col=sc>=4.5?'var(--green)':sc>=3.5?'var(--amber)':'var(--red)';
@@ -1797,24 +1796,21 @@ function showCompany(key){
   const radarSvg=radarSVG(cultureVals,cultureLabels);
   const cultureColors=['var(--blue)','var(--green)','var(--amber)','var(--red)','var(--green)','var(--green)'];
   const radarLegend=cultureLabels.map((l,i)=>{
-    const v=cultureVals[i];const col=v>=8.5?'var(--green)':v>=7?'var(--amber)':'var(--red)';
-    return `<div class="radar-leg-row"><span class="radar-leg-label">${l}</span><span class="radar-leg-val" style="color:${col};">${v.toFixed(1)}</span></div>`;
+    const v=cultureVals[i];
+    return `<div class="radar-leg-row"><span class="radar-leg-label">${l}</span><span class="radar-leg-val">${v.toFixed(1)}</span></div>`;
   }).join('');
   
   // Interview intel
   let intHtml='';
   if(c.interview){
     const iv=c.interview;
-    const diffCol=iv.diff==='Easy'?'var(--green)':iv.diff==='Moderate'?'var(--amber)':'var(--red)';
-    const posCol=iv.pos>=70?'var(--green)':iv.pos>=50?'var(--amber)':'var(--red)';
-    const offerCol=iv.offer>=40?'var(--green)':iv.offer>=25?'var(--amber)':'var(--red)';
     const qsHtml=iv.qs.map((q,i)=>`<div class="int-q-item"><div class="int-q-num">${i+1}</div><div>${q}</div></div>`).join('');
     intHtml=`<div class="profile-section"><div class="ps-title">Interview Intelligence</div>
       <div class="interview-stats">
-        <div class="int-stat"><div class="int-stat-val" style="color:${diffCol};">${iv.diff}</div><div class="int-stat-lbl">Difficulty</div></div>
-        <div class="int-stat"><div class="int-stat-val" style="color:${offerCol};">${iv.offer}%</div><div class="int-stat-lbl">Offer rate</div></div>
+        <div class="int-stat"><div class="int-stat-val">${iv.diff}</div><div class="int-stat-lbl">Difficulty</div></div>
+        <div class="int-stat"><div class="int-stat-val">${iv.offer}%</div><div class="int-stat-lbl">Offer rate</div></div>
         <div class="int-stat"><div class="int-stat-val">${iv.days}d</div><div class="int-stat-lbl">Avg. process</div></div>
-        <div class="int-stat"><div class="int-stat-val" style="color:${posCol};">${iv.pos}%</div><div class="int-stat-lbl">Positive exp.</div></div>
+        <div class="int-stat"><div class="int-stat-val">${iv.pos}%</div><div class="int-stat-lbl">Positive exp.</div></div>
       </div>
       <div class="int-questions"><div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;">Top reported questions</div>${qsHtml}</div>
     </div>`;
@@ -1838,8 +1834,7 @@ function showCompany(key){
   // Similar companies
   const simHtml=(c.similar||[]).slice(0,3).map(sk=>{
     const sc=companies[sk];if(!sc)return'';
-    const sScore=parseFloat(sc.score);const sCol=sScore>=8?'var(--green)':sScore>=7?'var(--amber)':'var(--red)';
-    return `<div class="sim-co-card" onclick="showCompany('${sk}')"><div class="sim-co-logo" style="background:${sc.bg.includes('gradient')?sc.bg:'none;background:'+sc.bg};color:${sc.fgColor};">${sc.init}</div><div class="sim-co-name">${sc.name}</div><div class="sim-co-score" style="color:${sCol};">${sc.score} / 10</div></div>`;
+    return `<div class="sim-co-card" onclick="showCompany('${sk}')"><div class="sim-co-logo" style="background:${sc.bg.includes('gradient')?sc.bg:'none;background:'+sc.bg};color:${sc.fgColor};">${sc.init}</div><div class="sim-co-name">${sc.name}</div><div class="sim-co-score">${sc.score} / 10</div></div>`;
   }).join('');
   
   el.innerHTML=`<div class="card">
@@ -1852,16 +1847,25 @@ function showCompany(key){
           <button class="btn btn-ghost btn-sm" onclick="toggleFollowCompany(this,'${c.name}')">Follow</button>
         </div>
       </div>
-      <div style="font-size:22px;font-weight:800;margin-bottom:3px;">${c.name}</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:3px;flex-wrap:wrap;">
+        <span style="font-size:22px;font-weight:800;">${c.name}</span>
+        <span style="padding:4px 10px;border-radius:6px;font-size:13px;font-weight:700;background:${score>=8?'var(--green-bg)':score>=7?'var(--amber-bg)':'var(--red-light)'};color:${score>=8?'var(--green)':score>=7?'var(--amber)':'var(--red)'};">${c.score}/10</span>
+      </div>
       <div style="font-size:13px;color:var(--muted);margin-bottom:2px;">${c.type} &middot; ${c.loc} &middot; Est. ${c.founded}</div>
       <div style="font-size:12px;font-style:italic;color:var(--muted);margin-bottom:10px;">"${c.tagline}"</div>
     </div>
     ${warningBanner}
     
     <div class="profile-section" style="background:#fafafa;border-top:1px solid var(--border-light);">
-      <div class="ci-score-wrap">
-        ${scoringRingHTML(c.score,scoreColor)}
-        <div class="ci-score-dims">${dimsHtml}</div>
+      <div class="ps-title" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;margin-bottom:0;" onclick="const el=this.nextElementSibling;el.style.display=el.style.display==='none'?'block':'none';this.querySelector('svg').style.transform=el.style.display==='none'?'':'rotate(180deg)';">
+        <span>Score Breakdown</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform .2s;"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div style="display:none;padding-top:12px;">
+        <div class="ci-score-wrap">
+          ${scoringRingHTML(c.score,scoreColor)}
+          <div class="ci-score-dims">${dimsHtml}</div>
+        </div>
       </div>
     </div>
     
