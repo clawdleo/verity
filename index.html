@@ -1376,11 +1376,17 @@ function onSearch(v){
   drop.classList.toggle('open',v.length>0);
 }
 
-// Keyboard support for role="button" elements
+// Keyboard support for role="button" elements and Escape to close modals
 document.addEventListener('keydown',e=>{
   if((e.key==='Enter'||e.key===' ')&&e.target.getAttribute('role')==='button'){
     e.preventDefault();
     e.target.click();
+  }
+  if(e.key==='Escape'){
+    ['compose','intel','unlock','salary','message'].forEach(id=>{
+      const m=document.getElementById('modal-'+id);
+      if(m&&m.classList.contains('open'))closeModal(id);
+    });
   }
 });
 
