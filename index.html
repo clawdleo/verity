@@ -18,6 +18,7 @@
 <meta name="twitter:description" content="Real salaries. Honest manager ratings. The professional network where everything is verified.">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
 :root{
   --red:#C41E3A;--red-dark:#9b1730;--red-light:#fce4e4;
   --bg:#f3f2ef;--card:#fff;--text:#1a1a1a;--muted:#666;
@@ -374,6 +375,9 @@ body.on-landing{padding-bottom:0;}
 @media(max-width:480px){
   .cact span{display:none;}
   .profile-hl{font-size:18px;}
+  /* Larger touch targets on small screens */
+  .btn-xs{padding:8px 14px;min-height:36px;}
+  .btn-sm{padding:8px 16px;min-height:40px;}
   .landing-ctas .btn{padding:12px 24px;font-size:14px;}
 }
 ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px;}
