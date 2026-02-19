@@ -1163,7 +1163,17 @@ function starSVG(filled){return `<svg width="14" height="14" viewBox="0 0 24 24"
 function renderStars(val,container){if(!container)return;let h='';for(let i=1;i<=5;i++){h+=starSVG(i<=Math.round(val));}container.innerHTML=h;}
 function initStars(){['rs-comm','rs-dev','rs-dec','rs-psych'].forEach((id,i)=>{let el=document.getElementById(id);if(el)renderStars([4.8,4.6,4.7,4.9][i],el);});}
 
-function go(v){
+// Navigation stack for back button
+let navStack=['feed'];
+let currentView='feed';
+
+function go(v,skipStack){
+  // Push to stack unless going back or same view
+  if(!skipStack && v!==currentView && !['profile','company'].includes(currentView)){
+    navStack.push(currentView);
+    if(navStack.length>10)navStack.shift(); // Limit stack size
+  }
+  currentView=v;
   document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));
   document.getElementById('view-'+v)?.classList.add('active');
   // Handle landing page body class
@@ -1179,6 +1189,10 @@ function go(v){
   if(v==='myprofile')initStars();
 }
 function goFeed(){go('feed');}
+function goBack(){
+  const prev=navStack.pop()||'feed';
+  go(prev,true);
+}
 
 function showProfile(key){
   const p=profiles[key];if(!p)return;
@@ -1195,7 +1209,7 @@ function showProfile(key){
     return `<div class="rating-row"><span class="rating-label">${ratingNames[i]}</span><div class="stars-row">${stars}</div><span class="rating-val">${v.toFixed(1)}</span></div>`;
   }).join('');
   const skillsHtml=p.skills.map(s=>`<span class="skill-chip">${s}</span>`).join('');
-  el.innerHTML=`<div class="card"><div class="profile-banner" style="position:relative;"><div class="back-link" onclick="history.back()||goFeed()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</div></div><div class="profile-hdr"><div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:-36px;margin-bottom:8px;flex-wrap:wrap;gap:8px;"><div class="av av112" style="background:${p.bg};">${p.initials}</div><div style="display:flex;gap:8px;flex-wrap:wrap;"><button class="btn btn-primary btn-sm" onclick="connectBtn(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button><button class="btn btn-ghost btn-sm" onclick="openMessage('${key}')">Message</button></div></div><div class="profile-hl">${p.name}</div><div class="profile-sub">${p.title} · ${p.co}<br>${p.loc}</div><div class="profile-badges">${verBadge}${openBadge}<span class="pill" style="font-size:10px;${scoreStyle}">${p.score}★ Verity Score</span></div></div>${warnBanner}<div class="profile-section"><div class="ps-title">About</div><div style="font-size:13px;line-height:1.7;color:var(--text);">${p.desc}</div></div><div class="profile-section"><div class="ps-title">Experience</div>${rolesHtml}</div><div class="profile-section"><div class="ps-title">Manager ratings (from direct reports)</div>${ratingsHtml}</div><div class="profile-section" style="border-top:1px solid var(--border-light);"><div class="ps-title">Skills</div><div>${skillsHtml}</div></div></div>`;
+  el.innerHTML=`<div class="card"><div class="profile-banner" style="position:relative;"><div class="back-link" onclick="goBack()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</div></div><div class="profile-hdr"><div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:-36px;margin-bottom:8px;flex-wrap:wrap;gap:8px;"><div class="av av112" style="background:${p.bg};">${p.initials}</div><div style="display:flex;gap:8px;flex-wrap:wrap;"><button class="btn btn-primary btn-sm" onclick="connectBtn(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button><button class="btn btn-ghost btn-sm" onclick="openMessage('${key}')">Message</button></div></div><div class="profile-hl">${p.name}</div><div class="profile-sub">${p.title} · ${p.co}<br>${p.loc}</div><div class="profile-badges">${verBadge}${openBadge}<span class="pill" style="font-size:10px;${scoreStyle}">${p.score}★ Verity Score</span></div></div>${warnBanner}<div class="profile-section"><div class="ps-title">About</div><div style="font-size:13px;line-height:1.7;color:var(--text);">${p.desc}</div></div><div class="profile-section"><div class="ps-title">Experience</div>${rolesHtml}</div><div class="profile-section"><div class="ps-title">Manager ratings (from direct reports)</div>${ratingsHtml}</div><div class="profile-section" style="border-top:1px solid var(--border-light);"><div class="ps-title">Skills</div><div>${skillsHtml}</div></div></div>`;
   go('profile');
 }
 
@@ -1206,7 +1220,7 @@ function showCompany(key){
   const metricsHtml=c.metrics.map(m=>`<div class="co-metric" style="background:${m.c};"><div class="co-metric-val" style="color:${m.t};">${m.v}</div><div class="co-metric-lbl">${m.l}</div></div>`).join('');
   const salHtml=c.salaries.map(s=>`<div class="salary-row"><div><div class="sal-role">${s.r}</div><div class="sal-count">${s.n}</div></div><div class="sal-range">${s.s}</div></div>`).join('');
   const revHtml=c.reviews.map(r=>`<div class="review-card"><div class="review-header"><div style="display:flex;gap:2px;">${Array.from({length:5},(_,i)=>starSVG(i<Math.round(parseFloat(r.score)))).join('')}</div><span class="pill pill-green" style="font-size:9px;"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · ${r.role}</span></div>${r.txt}</div>`).join('');
-  el.innerHTML=`<div class="card"><div class="co-banner" style="position:relative;"><div class="back-link" onclick="history.back()||goFeed()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</div></div><div style="padding:0 20px 16px;"><div style="display:flex;align-items:flex-end;gap:14px;margin-top:-38px;margin-bottom:12px;flex-wrap:wrap;"><div class="co-logo" style="background:${c.bg};color:${c.fgColor};">${c.init}</div><div style="display:flex;gap:8px;margin-left:auto;flex-wrap:wrap;"><button class="btn btn-primary btn-sm" onclick="go('jobs')">View open roles</button><button class="btn btn-ghost btn-sm" onclick="toast('Following ${c.name}')">Follow</button></div></div><div style="font-size:22px;font-weight:800;margin-bottom:4px;">${c.name}</div><div style="font-size:13px;color:var(--muted);margin-bottom:4px;">${c.type} · ${c.loc}</div><div style="font-size:12px;font-style:italic;color:var(--muted);margin-bottom:8px;">"${c.tagline}"</div></div>${warningBanner}<div style="padding:0 20px;"><div class="co-metrics">${metricsHtml}</div></div><div class="profile-section"><div class="ps-title">About</div><div style="font-size:13px;line-height:1.7;">${c.desc}</div></div><div class="profile-section"><div class="ps-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:middle;margin-right:4px;"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Verified Salaries</div>${salHtml}</div><div class="profile-section"><div class="ps-title">Employee reviews <span class="pill pill-green" style="font-size:10px;">Verified</span></div>${revHtml}</div></div>`;
+  el.innerHTML=`<div class="card"><div class="co-banner" style="position:relative;"><div class="back-link" onclick="goBack()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</div></div><div style="padding:0 20px 16px;"><div style="display:flex;align-items:flex-end;gap:14px;margin-top:-38px;margin-bottom:12px;flex-wrap:wrap;"><div class="co-logo" style="background:${c.bg};color:${c.fgColor};">${c.init}</div><div style="display:flex;gap:8px;margin-left:auto;flex-wrap:wrap;"><button class="btn btn-primary btn-sm" onclick="go('jobs')">View open roles</button><button class="btn btn-ghost btn-sm" onclick="toast('Following ${c.name}')">Follow</button></div></div><div style="font-size:22px;font-weight:800;margin-bottom:4px;">${c.name}</div><div style="font-size:13px;color:var(--muted);margin-bottom:4px;">${c.type} · ${c.loc}</div><div style="font-size:12px;font-style:italic;color:var(--muted);margin-bottom:8px;">"${c.tagline}"</div></div>${warningBanner}<div style="padding:0 20px;"><div class="co-metrics">${metricsHtml}</div></div><div class="profile-section"><div class="ps-title">About</div><div style="font-size:13px;line-height:1.7;">${c.desc}</div></div><div class="profile-section"><div class="ps-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:middle;margin-right:4px;"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Verified Salaries</div>${salHtml}</div><div class="profile-section"><div class="ps-title">Employee reviews <span class="pill pill-green" style="font-size:10px;">Verified</span></div>${revHtml}</div></div>`;
   go('company');
 }
 
