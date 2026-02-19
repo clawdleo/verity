@@ -1084,9 +1084,9 @@ body.on-landing{padding-bottom:0;}
 
 <!-- ══ MODALS ══ -->
 <div class="modal-overlay" id="modal-compose" onclick="if(event.target===this)closeModal('compose')">
-  <div class="modal">
-    <div class="modal-close" onclick="closeModal('compose')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-    <h3>Share an Intel Loop</h3>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-compose-title">
+    <div class="modal-close" onclick="closeModal('compose')" aria-label="Close dialog"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+    <h3 id="modal-compose-title">Share an Intel Loop</h3>
     <p>Posts are tied to your verified profile. Anonymous posting available for sensitive topics.</p>
     <select class="modal-input" style="appearance:none;"><option>Culture</option><option>Salary</option><option>Interview</option><option>Management</option><option>WFH Policy</option></select>
     <textarea class="modal-textarea" placeholder="What do professionals need to know? Be specific — generic takes get fewer upvotes."></textarea>
@@ -1095,9 +1095,9 @@ body.on-landing{padding-bottom:0;}
 </div>
 
 <div class="modal-overlay" id="modal-intel" onclick="if(event.target===this)closeModal('intel')">
-  <div class="modal">
-    <div class="modal-close" onclick="closeModal('intel')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-    <h3>Post Intel Question</h3>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-intel-title">
+    <div class="modal-close" onclick="closeModal('intel')" aria-label="Close dialog"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+    <h3 id="modal-intel-title">Post Intel Question</h3>
     <p>Ask something specific. Vague questions get fewer responses.</p>
     <input class="modal-input" placeholder="e.g. What is the real base salary for a Senior PM at Nexora?">
     <select class="modal-input" style="appearance:none;"><option>Culture</option><option>Salary</option><option>Interview</option><option>Management</option></select>
@@ -1107,9 +1107,9 @@ body.on-landing{padding-bottom:0;}
 </div>
 
 <div class="modal-overlay" id="modal-unlock" onclick="if(event.target===this)closeModal('unlock')">
-  <div class="modal">
-    <div class="modal-close" onclick="closeModal('unlock')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-    <h3>Contribute to Unlock</h3>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-unlock-title">
+    <div class="modal-close" onclick="closeModal('unlock')" aria-label="Close dialog"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+    <h3 id="modal-unlock-title">Contribute to Unlock</h3>
     <p id="unlock-desc">Share your experience to unlock insider answers. Your response is anonymized and verified.</p>
     <textarea class="modal-textarea" placeholder="Be specific about your experience. Generic answers are rejected by our moderation system."></textarea>
     <div class="modal-footer"><button class="btn btn-ghost btn-sm" onclick="closeModal('unlock')">Cancel</button><button class="btn btn-primary btn-sm" onclick="submitUnlock()">Submit & Unlock</button></div>
@@ -1117,9 +1117,9 @@ body.on-landing{padding-bottom:0;}
 </div>
 
 <div class="modal-overlay" id="modal-salary" onclick="if(event.target===this)closeModal('salary')">
-  <div class="modal">
-    <div class="modal-close" onclick="closeModal('salary')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-    <h3>Submit Salary Data</h3>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-salary-title">
+    <div class="modal-close" onclick="closeModal('salary')" aria-label="Close dialog"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+    <h3 id="modal-salary-title">Submit Salary Data</h3>
     <p>Verified salary data is anonymous. You must be a current or recent employee to submit.</p>
     <input class="modal-input" placeholder="Job title">
     <input class="modal-input" placeholder="Company">
@@ -1132,8 +1132,8 @@ body.on-landing{padding-bottom:0;}
 
 <!-- MESSAGE MODAL -->
 <div class="modal-overlay" id="modal-message" onclick="if(event.target===this)closeModal('message')">
-  <div class="modal">
-    <div class="modal-close" onclick="closeModal('message')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="msg-recipient-name">
+    <div class="modal-close" onclick="closeModal('message')" aria-label="Close dialog"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
       <div id="msg-recipient-av" class="av av48" style="background:linear-gradient(135deg,#2563eb,#1e40af);">SC</div>
       <div>
