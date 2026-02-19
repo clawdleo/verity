@@ -56,7 +56,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .bnav-badge{position:absolute;top:2px;right:calc(50% - 18px);background:var(--red);color:#fff;font-size:9px;font-weight:800;border-radius:50%;min-width:15px;height:15px;display:flex;align-items:center;justify-content:center;padding:0 2px;}
 
 /* ── LAYOUT ── */
-.layout{max-width:1200px;margin:72px auto 0;padding:24px 32px;display:grid;grid-template-columns:240px 1fr 320px;gap:24px;align-items:start;}
+.layout{max-width:1200px;margin:72px auto 0;padding:24px 32px;display:grid;grid-template-columns:300px 1fr;gap:24px;align-items:start;}
+.right-sidebar{display:none;}
 
 /* ── CARD ── */
 .card{background:var(--card);border-radius:8px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:8px;transition:box-shadow .2s,transform .2s;}
@@ -354,7 +355,7 @@ body.on-landing{padding-bottom:0;}
 /* ── RESPONSIVE ── */
 /* Desktop-first: default is large screen, shrink down */
 @media(max-width:1100px){
-  .layout{grid-template-columns:1fr 300px;padding:16px;}
+  .layout{grid-template-columns:1fr;padding:16px;}
   .left-sidebar{display:none;}
 }
 @media(max-width:768px){
@@ -454,6 +455,39 @@ body.on-landing{padding-bottom:0;}
     <div style="padding:8px 14px 2px;font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.5px;">Groups</div>
     <div class="lsb-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Product Managers EU</div>
     <div class="lsb-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> SaaS Founders Network</div>
+  </div>
+  <!-- Verified Today -->
+  <div class="card" style="padding:0 0 8px 0;">
+    <div style="padding:10px 14px 4px;font-size:12px;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:5px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Verified today</div>
+    <div style="padding:6px 14px;display:flex;flex-wrap:wrap;gap:6px;">
+      <div class="sp-av" style="width:36px;height:36px;font-size:11px;background:linear-gradient(135deg,#2563eb,#1e40af);cursor:pointer;" onclick="showProfile('sarah')">SC</div>
+      <div class="sp-av" style="width:36px;height:36px;font-size:11px;background:linear-gradient(135deg,#7c3aed,#5b21b6);cursor:pointer;" onclick="showProfile('ana')">AK</div>
+      <div class="sp-av" style="width:36px;height:36px;font-size:11px;background:linear-gradient(135deg,#0891b2,#0e7490);">DP</div>
+      <div class="sp-av" style="width:36px;height:36px;font-size:11px;background:linear-gradient(135deg,#059669,#047857);cursor:pointer;" onclick="showProfile('elena')">ER</div>
+      <div class="sp-av" style="width:36px;height:36px;font-size:11px;background:linear-gradient(135deg,#d97706,#b45309);cursor:pointer;" onclick="showProfile('thomas')">TN</div>
+      <div class="sp-av" style="width:36px;height:36px;font-size:11px;background:linear-gradient(135deg,#be185d,#9d174d);cursor:pointer;" onclick="showProfile('lara')">LM</div>
+    </div>
+  </div>
+  <!-- Network suggestions -->
+  <div class="card" style="padding:14px;">
+    <div class="rsb-title">Suggestions</div>
+    <div class="rsb-person"><div class="av av40" style="background:linear-gradient(135deg,#2563eb,#1e40af);cursor:pointer;" onclick="showProfile('sarah')">SC</div><div style="flex:1;min-width:0;"><div class="rsb-name" onclick="showProfile('sarah')">Sarah Chen</div><div class="rsb-sub">Sr. PM · Nexora</div><button class="btn btn-outline btn-xs" onclick="connectBtn(this)">Connect</button></div></div>
+    <div class="rsb-person"><div class="av av40" style="background:linear-gradient(135deg,#059669,#047857);cursor:pointer;" onclick="showProfile('elena')">ER</div><div style="flex:1;min-width:0;"><div class="rsb-name" onclick="showProfile('elena')">Elena Russo</div><div class="rsb-sub">UX · Open to Work</div><button class="btn btn-outline btn-xs" onclick="connectBtn(this)">Connect</button></div></div>
+    <div class="rsb-person" style="border-bottom:none;"><div class="av av40" style="background:linear-gradient(135deg,#be185d,#9d174d);cursor:pointer;" onclick="showProfile('lara')">LM</div><div style="flex:1;min-width:0;"><div class="rsb-name" onclick="showProfile('lara')">Lara Müller</div><div class="rsb-sub">Designer · Quantum</div><button class="btn btn-outline btn-xs" onclick="connectBtn(this)">Connect</button></div></div>
+  </div>
+  <!-- Top Scores -->
+  <div class="card" style="padding:14px;">
+    <div class="rsb-title">Top Verity Scores</div>
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <div style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;" onclick="showCompany('growthlabs')"><span style="font-weight:800;color:var(--muted);width:18px;">1</span><span style="flex:1;">GrowthLabs</span><span class="trend-score ts-hi" style="font-size:11px;">9.2</span></div>
+      <div style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;" onclick="showCompany('quantum')"><span style="font-weight:800;color:var(--muted);width:18px;">2</span><span style="flex:1;">QuantumAI</span><span class="trend-score ts-hi" style="font-size:11px;">8.9</span></div>
+      <div style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;" onclick="showCompany('nexora')"><span style="font-weight:800;color:var(--muted);width:18px;">3</span><span style="flex:1;">Nexora Tech</span><span class="trend-score ts-hi" style="font-size:11px;">8.4</span></div>
+      <div style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;" onclick="showCompany('startuphub')"><span style="font-weight:800;color:var(--muted);width:18px;">4</span><span style="flex:1;">StartupHub</span><span class="trend-score ts-lo" style="font-size:11px;">5.8</span></div>
+    </div>
+  </div>
+  <div style="font-size:11px;color:var(--muted);padding:10px 4px;line-height:1.6;">
+    <a href="#" style="color:var(--muted);">About</a> · <a href="#" style="color:var(--muted);">Privacy</a> · <a href="#" style="color:var(--muted);">Terms</a><br>
+    Verity © 2026
   </div>
 </aside>
 
