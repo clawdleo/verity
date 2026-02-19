@@ -56,8 +56,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .bnav-badge{position:absolute;top:2px;right:calc(50% - 18px);background:var(--red);color:#fff;font-size:9px;font-weight:800;border-radius:50%;min-width:15px;height:15px;display:flex;align-items:center;justify-content:center;padding:0 2px;}
 
 /* ── LAYOUT ── */
-.layout{max-width:1440px;width:100%;margin:72px auto 0;padding:24px 32px;display:grid;grid-template-columns:280px 1fr 280px;gap:24px;align-items:start;}
-.right-sidebar{display:block;}
+.layout{max-width:1600px;width:100%;margin:72px auto 0;padding:24px 48px;display:grid;grid-template-columns:260px 1fr;gap:28px;align-items:start;}
+.right-sidebar{display:none;}
 
 /* ── CARD ── */
 .card{background:var(--card);border-radius:8px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:8px;transition:box-shadow .2s,transform .2s;}
@@ -354,14 +354,9 @@ body.on-landing{padding-bottom:0;}
 
 /* ── RESPONSIVE ── */
 /* Desktop-first: default is large screen, shrink down */
-@media(max-width:1200px){
-  .layout{grid-template-columns:280px 1fr;padding:16px;}
-  .right-sidebar{display:none;}
-}
 @media(max-width:900px){
   .layout{grid-template-columns:1fr;padding:16px;}
   .left-sidebar{display:none;}
-  .right-sidebar{display:none;}
 }
 @media(max-width:768px){
   .layout{grid-template-columns:1fr;padding:12px;}
