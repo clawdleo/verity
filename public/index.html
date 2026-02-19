@@ -397,6 +397,77 @@ body.on-landing{padding-bottom:0;}
   .btn-sm{padding:8px 16px;min-height:40px;}
   .landing-ctas .btn{padding:12px 24px;font-size:14px;}
 }
+
+/* ── COMPANY INTELLIGENCE v2 ── */
+.ci-score-wrap{display:flex;align-items:center;gap:24px;padding:16px 0;flex-wrap:wrap;}
+.ci-score-ring{flex-shrink:0;}
+.ci-score-dims{flex:1;min-width:200px;}
+.ci-dim-row{display:flex;align-items:center;gap:8px;margin-bottom:9px;}
+.ci-dim-label{font-size:12px;color:var(--muted);width:110px;flex-shrink:0;}
+.ci-dim-bar-wrap{flex:1;height:6px;background:#f0f0f0;border-radius:3px;overflow:hidden;}
+.ci-dim-fill{height:100%;border-radius:3px;transition:width .6s ease;}
+.ci-dim-val{font-size:12px;font-weight:700;width:28px;text-align:right;flex-shrink:0;}
+
+/* Manager rating distribution */
+.mgr-section{margin-bottom:14px;}
+.mgr-axis-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;}
+.mgr-axis-label{font-size:12px;color:var(--muted);width:160px;flex-shrink:0;}
+.mgr-dist-bar{flex:1;height:18px;display:flex;border-radius:4px;overflow:hidden;min-width:120px;}
+.mgr-dist-seg{height:100%;transition:width .5s ease;}
+.mgr-dist-exc{background:#1a6329;}
+.mgr-dist-good{background:#4ade80;}
+.mgr-dist-avg{background:#fbbf24;}
+.mgr-dist-poor{background:#ef4444;}
+.mgr-axis-score{font-size:12px;font-weight:700;width:28px;color:var(--text);flex-shrink:0;}
+.mgr-legend{display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap;}
+.mgr-leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);}
+.mgr-leg-dot{width:10px;height:10px;border-radius:2px;}
+
+/* Salary bar chart */
+.sal-chart-item{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--border-light);}
+.sal-chart-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.sal-chart-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;flex-wrap:wrap;gap:4px;}
+.sal-chart-role{font-weight:700;font-size:14px;}
+.sal-chart-range{font-size:13px;color:var(--red);font-weight:700;}
+.sal-bar-track{position:relative;height:32px;background:#f3f2ef;border-radius:8px;margin-bottom:6px;}
+.sal-bar-fill{position:absolute;top:0;height:100%;background:linear-gradient(90deg,#dcfce7,#86efac);border-radius:8px;transition:width .6s ease;}
+.sal-bar-med{position:absolute;top:-4px;height:calc(100% + 8px);width:2px;background:#1a6329;border-radius:2px;}
+.sal-bar-label{position:absolute;top:-20px;transform:translateX(-50%);font-size:10px;font-weight:700;color:#1a6329;white-space:nowrap;}
+.sal-bar-p25{position:absolute;bottom:-16px;transform:translateX(-50%);font-size:10px;color:var(--muted);white-space:nowrap;}
+.sal-bar-p75{position:absolute;bottom:-16px;transform:translateX(-50%);font-size:10px;color:var(--muted);white-space:nowrap;}
+.sal-verified{font-size:11px;color:var(--green);margin-top:16px;display:flex;align-items:center;gap:4px;}
+
+/* Culture radar */
+.radar-wrap{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.radar-legend{display:flex;flex-direction:column;gap:8px;flex:1;min-width:150px;}
+.radar-leg-row{display:flex;align-items:center;justify-content:space-between;font-size:12px;}
+.radar-leg-label{color:var(--muted);}
+.radar-leg-val{font-weight:700;color:var(--text);}
+
+/* Interview intel */
+.interview-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px;}
+@media(min-width:500px){.interview-stats{grid-template-columns:repeat(4,1fr);}}
+.int-stat{text-align:center;padding:12px 8px;background:#fafafa;border-radius:8px;border:1px solid var(--border-light);}
+.int-stat-val{font-size:22px;font-weight:800;margin-bottom:2px;}
+.int-stat-lbl{font-size:11px;color:var(--muted);}
+.int-questions{margin-top:12px;}
+.int-q-item{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid var(--border-light);font-size:13px;line-height:1.5;}
+.int-q-item:last-child{border-bottom:none;}
+.int-q-num{width:20px;height:20px;border-radius:50%;background:var(--red-light);color:var(--red);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+
+/* Apply recommendation */
+.apply-rec{padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--border-light);}
+.apply-rec-txt{flex:1;}
+.apply-rec-verdict{font-size:17px;font-weight:800;margin-bottom:2px;}
+.apply-rec-sub{font-size:12px;opacity:.8;}
+
+/* Similar companies */
+.similar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.sim-co-card{border:1px solid var(--border-light);border-radius:8px;padding:12px;text-align:center;cursor:pointer;transition:all .15s;}
+.sim-co-card:hover{border-color:var(--red);box-shadow:0 2px 8px rgba(196,30,58,.1);}
+.sim-co-logo{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;margin:0 auto 8px;}
+.sim-co-name{font-size:12px;font-weight:700;margin-bottom:2px;}
+.sim-co-score{font-size:11px;font-weight:700;}
 ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px;}
 </style>
 </head>
@@ -1526,12 +1597,53 @@ const profiles={
   david:{initials:'DP',bg:'linear-gradient(135deg,#0891b2,#0e7490)',name:'David Park',title:'Data Scientist',co:'QuantumAI',loc:'Seoul, South Korea',score:'4.7',verified:true,open:false,desc:'Data scientist at QuantumAI, working remotely from Seoul. Specializing in recommendation systems and real-time ML pipelines. Previously at Naver and Samsung AI. Big advocate for async-first remote work.',roles:[{co:'QuantumAI',role:'Data Scientist',dates:'Mar 2023 – Present · 2 yrs',bg:'linear-gradient(135deg,#1a1a2e,#16213e)',init:'QA',verified:true},{co:'Naver',role:'ML Engineer',dates:'Jul 2020 – Mar 2023 · 2 yrs 8 mos',bg:'#00c73c',init:'NV',verified:true}],ratings:{comm:4.7,dev:4.6,dec:4.8,psych:4.7},skills:['Python','TensorFlow','Recommender Systems','MLOps','Kubernetes','Real-time ML']}
 };
 const companies={
-  nexora:{init:'NT',bg:'#1a1a2e',fgColor:'var(--red)',name:'Nexora Tech',type:'Enterprise SaaS',loc:'Amsterdam, NL · 420 employees',score:'8.4',scoreColor:'var(--green)',founded:2015,tagline:'We publish our salary bands. Every quarter.',desc:'Nexora builds enterprise workflow automation used by 2,400+ companies. Known for transparent pay, quarterly manager ratings, and no layoffs since 2020.',metrics:[{v:'8.4',l:'Verity Score',c:'var(--green-bg)',t:'var(--green)'},{v:'97%',l:'Recruiter reply',c:'var(--blue-bg)',t:'var(--blue)'},{v:'4.1%',l:'Turnover/yr',c:'var(--green-bg)',t:'var(--green)'}],salaries:[{r:'Senior PM',s:'€82k – €105k',n:'12 verified'},{r:'Eng Lead',s:'€94k – €130k',n:'8 verified'},{r:'UX Designer',s:'€55k – €75k',n:'6 verified'},{r:'Data Engineer',s:'€70k – €95k',n:'5 verified'}],reviews:[{score:'5.0',txt:'First company where the manager accountability system actually works. My manager improved after getting low scores on communication. Changed how I think about management.',role:'Senior PM'},{score:'4.8',txt:'Salary reviews are tied to market data, not just "budget." Got a 18% raise without needing a competing offer. Rare.',role:'Engineering Lead'}]},
-  quantum:{init:'QA',bg:'linear-gradient(135deg,#1a1a2e,#16213e)',fgColor:'#fff',name:'QuantumAI',type:'Artificial Intelligence',loc:'Remote-first · 180 employees',score:'8.9',scoreColor:'var(--green)',founded:2020,tagline:'Remote-first, research-first, transparency-first.',desc:'QuantumAI builds LLM infrastructure for enterprise. Fully remote, async-first culture with the highest Verity score in AI/ML. 99% recruiter response rate.',metrics:[{v:'8.9',l:'Verity Score',c:'var(--green-bg)',t:'var(--green)'},{v:'99%',l:'Recruiter reply',c:'var(--blue-bg)',t:'var(--blue)'},{v:'3.2%',l:'Turnover/yr',c:'var(--green-bg)',t:'var(--green)'}],salaries:[{r:'Senior ML Eng',s:'€100k – €145k',n:'9 verified'},{r:'Research Scientist',s:'€130k – €180k',n:'4 verified'},{r:'Product Designer',s:'€75k – €105k',n:'5 verified'},{r:'Backend Eng',s:'€90k – €125k',n:'7 verified'}],reviews:[{score:'5.0',txt:'Joined at €118k, raised to €132k after year 1. The async-first culture is genuine — no Slack pings at 10pm. Best employer I\'ve had.',role:'Data Scientist'},{score:'4.7',txt:'Full remote, full trust. Manager rating system is taken seriously. Never felt micromanaged for a single day.',role:'Product Designer'}]},
-  growthlabs:{init:'GL',bg:'linear-gradient(135deg,#059669,#047857)',fgColor:'#fff',name:'GrowthLabs',type:'Marketing Technology',loc:'Warsaw, PL · 310 employees',score:'9.2',scoreColor:'var(--green)',founded:2017,tagline:'Highest Verity Score in Europe. We earned it.',desc:'GrowthLabs builds growth tooling for SaaS. The highest Verity score in Europe is backed by real data: market-rate salaries, transparent hiring, and 98% recruiter response rate.',metrics:[{v:'9.2',l:'Verity Score',c:'var(--green-bg)',t:'var(--green)'},{v:'98%',l:'Recruiter reply',c:'var(--blue-bg)',t:'var(--blue)'},{v:'2.9%',l:'Turnover/yr',c:'var(--green-bg)',t:'var(--green)'}],salaries:[{r:'Marketing Director',s:'€72k – €92k',n:'6 verified'},{r:'Data Scientist',s:'€80k – €110k',n:'5 verified'},{r:'Growth PM',s:'€65k – €85k',n:'8 verified'},{r:'Content Lead',s:'€55k – €72k',n:'4 verified'}],reviews:[{score:'5.0',txt:'9.2 is not a fluke. Ana built a team culture where nobody whispers about pay. Everyone knows what everyone earns. Total trust.',role:'Senior Data Scientist'},{score:'4.9',txt:'Accepted at my asking price. No negotiation theatre. "We benchmarked this, it\'s fair." That\'s how it should work.',role:'Growth PM'}]},
-  dataflow:{init:'DF',bg:'linear-gradient(135deg,#d97706,#b45309)',fgColor:'#fff',name:'DataFlow',type:'Analytics & BI',loc:'Berlin, Germany · 680 employees',score:'7.1',scoreColor:'var(--amber)',founded:2012,tagline:'Stable, profitable, and honest about the gap.',desc:'DataFlow is one of Berlin\'s longest-running analytics companies. Stable and profitable, but pay is 10–15% below market. Strong job security, weak salary growth.',metrics:[{v:'7.1',l:'Verity Score',c:'var(--amber-bg)',t:'var(--amber)'},{v:'74%',l:'Recruiter reply',c:'var(--amber-bg)',t:'var(--amber)'},{v:'8.1%',l:'Turnover/yr',c:'var(--amber-bg)',t:'var(--amber)'}],salaries:[{r:'Engineering Lead',s:'€80k – €95k',n:'7 verified'},{r:'Data Engineer',s:'€62k – €78k',n:'9 verified'},{r:'Product Manager',s:'€65k – €82k',n:'6 verified'},{r:'Backend Dev',s:'€58k – €75k',n:'11 verified'}],reviews:[{score:'3.5',txt:'Stable job, below-market pay. If you push, you get a raise — but only after you have a competing offer. Shouldn\'t work that way.',role:'Senior Backend'},{score:'4.2',txt:'No layoffs in 8 years is genuinely remarkable. But I left for a 22% raise elsewhere. Make of that what you will.',role:'Data Engineer'}]},
-  startuphub:{init:'SH',bg:'linear-gradient(135deg,#dc2626,#991b1b)',fgColor:'#fff',name:'StartupHub',type:'VC-backed Platform',loc:'London, UK · 90 employees',score:'5.8',scoreColor:'var(--red)',founded:2018,tagline:'⚠ High growth. High risk. Check the manager scores.',desc:'StartupHub is a VC-backed platform for early-stage founders. Fast-moving but flagged for toxic management culture. CEO James O\'Brien has a 3.2★ manager score. 3 PMs left Q1 2026.',metrics:[{v:'5.8',l:'Verity Score',c:'var(--red-light)',t:'var(--red)'},{v:'41%',l:'Recruiter reply',c:'var(--red-light)',t:'var(--red)'},{v:'31%',l:'Turnover/yr',c:'var(--red-light)',t:'var(--red)'}],salaries:[{r:'Product Manager',s:'€72k – €90k',n:'4 verified'},{r:'Engineering Lead',s:'€85k – €105k',n:'3 verified'},{r:'Growth Manager',s:'€60k – €80k',n:'2 verified'}],reviews:[{score:'2.0',txt:'Left after 8 months. Public criticism in all-hands. James calls it "direct feedback." Three PMs quit Q1. Not a coincidence.',role:'Former PM'},{score:'2.5',txt:'The salary was real. The culture was not. 41% recruiter response rate is the public face of private contempt for candidates.',role:'Former Eng Lead'}]},
-  cloudstack:{init:'CS',bg:'linear-gradient(135deg,#0891b2,#0e7490)',fgColor:'#fff',name:'CloudStack',type:'Cloud Infrastructure',loc:'Prague, CZ · 230 employees',score:'7.8',scoreColor:'var(--green)',founded:2016,tagline:'Infrastructure without surprises.',desc:'CloudStack provides DevOps tooling and managed Kubernetes. Solid culture, honest pay, genuine remote trust. 91% recruiter response rate and growing.',metrics:[{v:'7.8',l:'Verity Score',c:'var(--green-bg)',t:'var(--green)'},{v:'91%',l:'Recruiter reply',c:'var(--blue-bg)',t:'var(--blue)'},{v:'6.2%',l:'Turnover/yr',c:'var(--green-bg)',t:'var(--green)'}],salaries:[{r:'DevOps Lead',s:'€68k – €88k',n:'5 verified'},{r:'Platform Eng',s:'€60k – €78k',n:'6 verified'},{r:'Site Reliability Eng',s:'€70k – €90k',n:'4 verified'}],reviews:[{score:'4.5',txt:'My manager saw his Verity ratings and came to ask what he could improve. Honestly shocked me. It\'s working.',role:'DevOps Lead'},{score:'4.0',txt:'Pay is fair, not exceptional. Culture is genuinely good. Hybrid done right — 2 days office, 3 remote, no monitoring.',role:'Platform Engineer'}]}
+  nexora:{init:'NT',bg:'#1a1a2e',fgColor:'var(--red)',name:'Nexora Tech',type:'Enterprise SaaS',loc:'Amsterdam, NL · 420 employees',score:'8.4',scoreColor:'var(--green)',founded:2015,tagline:'We publish our salary bands. Every quarter.',desc:'Nexora builds enterprise workflow automation used by 2,400+ companies. Known for transparent pay, quarterly manager ratings, and no layoffs since 2020.',metrics:[{v:'8.4',l:'Verity Score',c:'var(--green-bg)',t:'var(--green)'},{v:'97%',l:'Recruiter reply',c:'var(--blue-bg)',t:'var(--blue)'},{v:'4.1%',l:'Turnover/yr',c:'var(--green-bg)',t:'var(--green)'}],
+  salaries:[{r:'Senior PM',s:'€82k – €105k',n:'12 verified',min:82,med:93,max:105},{r:'Eng Lead',s:'€94k – €130k',n:'8 verified',min:94,med:112,max:130},{r:'UX Designer',s:'€55k – €75k',n:'6 verified',min:55,med:65,max:75},{r:'Data Engineer',s:'€70k – €95k',n:'5 verified',min:70,med:82,max:95}],
+  reviews:[{score:'5.0',txt:'First company where the manager accountability system actually works. My manager improved after getting low scores on communication. Changed how I think about management.',role:'Senior PM',tenure:'2y'},{score:'4.8',txt:'Salary reviews are tied to market data, not just "budget." Got a 18% raise without needing a competing offer. Rare.',role:'Engineering Lead',tenure:'3y'}],
+  mgr:{axes:['Communicates clearly','Fair feedback','Supports growth','Respects limits','Accountability','Inspires team'],scores:[4.7,4.5,4.6,4.8,4.4,4.3],dist:[[65,25,8,2],[58,30,9,3],[70,22,6,2],[80,15,4,1],[62,28,7,3],[55,30,12,3]]},
+  culture:[8.7,8.1,7.9,9.2,8.4,8.8],
+  interview:{diff:'Moderate',offer:34,days:18,pos:74,qs:['Tell us about a time you shipped something with limited data.','How do you work with engineers on ambiguous requirements?','Walk me through a product decision you regret.']}
+  ,similar:['quantum','growthlabs','cloudstack']},
+
+  quantum:{init:'QA',bg:'linear-gradient(135deg,#1a1a2e,#16213e)',fgColor:'#fff',name:'QuantumAI',type:'Artificial Intelligence',loc:'Remote-first · 180 employees',score:'8.9',scoreColor:'var(--green)',founded:2020,tagline:'Remote-first, research-first, transparency-first.',desc:'QuantumAI builds LLM infrastructure for enterprise. Fully remote, async-first culture with the highest Verity score in AI/ML. 99% recruiter response rate.',metrics:[{v:'8.9',l:'Verity Score',c:'var(--green-bg)',t:'var(--green)'},{v:'99%',l:'Recruiter reply',c:'var(--blue-bg)',t:'var(--blue)'},{v:'3.2%',l:'Turnover/yr',c:'var(--green-bg)',t:'var(--green)'}],
+  salaries:[{r:'Senior ML Eng',s:'€100k – €145k',n:'9 verified',min:100,med:122,max:145},{r:'Research Scientist',s:'€130k – €180k',n:'4 verified',min:130,med:155,max:180},{r:'Product Designer',s:'€75k – €105k',n:'5 verified',min:75,med:90,max:105},{r:'Backend Eng',s:'€90k – €125k',n:'7 verified',min:90,med:107,max:125}],
+  reviews:[{score:'5.0',txt:'Joined at €118k, raised to €132k after year 1. The async-first culture is genuine — no Slack pings at 10pm. Best employer I've had.',role:'Data Scientist',tenure:'2y'},{score:'4.7',txt:'Full remote, full trust. Manager rating system is taken seriously. Never felt micromanaged for a single day.',role:'Product Designer',tenure:'1.5y'}],
+  mgr:{axes:['Communicates clearly','Fair feedback','Supports growth','Respects limits','Accountability','Inspires team'],scores:[4.9,4.8,4.7,5.0,4.6,4.8],dist:[[80,18,2,0],[75,22,3,0],[72,24,4,0],[88,10,2,0],[70,25,5,0],[76,20,4,0]]},
+  culture:[9.5,9.2,8.8,9.7,9.8,9.0],
+  interview:{diff:'Hard',offer:18,days:22,pos:82,qs:['Design a distributed system for real-time ML inference at 10M req/day.','How would you approach building a privacy-preserving ML pipeline?','Tell us about a time you pushed back on leadership with data.']}
+  ,similar:['nexora','growthlabs','cloudstack']},
+
+  growthlabs:{init:'GL',bg:'linear-gradient(135deg,#059669,#047857)',fgColor:'#fff',name:'GrowthLabs',type:'Marketing Technology',loc:'Warsaw, PL · 310 employees',score:'9.2',scoreColor:'var(--green)',founded:2017,tagline:'Highest Verity Score in Europe. We earned it.',desc:'GrowthLabs builds growth tooling for SaaS. The highest Verity score in Europe is backed by real data: market-rate salaries, transparent hiring, and 98% recruiter response rate.',metrics:[{v:'9.2',l:'Verity Score',c:'var(--green-bg)',t:'var(--green)'},{v:'98%',l:'Recruiter reply',c:'var(--blue-bg)',t:'var(--blue)'},{v:'2.9%',l:'Turnover/yr',c:'var(--green-bg)',t:'var(--green)'}],
+  salaries:[{r:'Marketing Director',s:'€72k – €92k',n:'6 verified',min:72,med:82,max:92},{r:'Data Scientist',s:'€80k – €110k',n:'5 verified',min:80,med:95,max:110},{r:'Growth PM',s:'€65k – €85k',n:'8 verified',min:65,med:75,max:85},{r:'Content Lead',s:'€55k – €72k',n:'4 verified',min:55,med:63,max:72}],
+  reviews:[{score:'5.0',txt:'9.2 is not a fluke. Ana built a team culture where nobody whispers about pay. Everyone knows what everyone earns. Total trust.',role:'Senior Data Scientist',tenure:'3y'},{score:'4.9',txt:'Accepted at my asking price. No negotiation theatre. "We benchmarked this, it's fair." That's how it should work.',role:'Growth PM',tenure:'2y'}],
+  mgr:{axes:['Communicates clearly','Fair feedback','Supports growth','Respects limits','Accountability','Inspires team'],scores:[5.0,4.9,4.8,5.0,4.9,4.7],dist:[[85,14,1,0],[82,16,2,0],[80,18,2,0],[90,9,1,0],[84,14,2,0],[78,20,2,0]]},
+  culture:[9.8,9.4,9.1,9.3,9.0,9.5],
+  interview:{diff:'Moderate',offer:28,days:14,pos:88,qs:['How do you measure the success of a growth experiment?','Tell us about a campaign that failed and what you learned.','How do you align marketing and product roadmaps?']}
+  ,similar:['quantum','nexora','cloudstack']},
+
+  dataflow:{init:'DF',bg:'linear-gradient(135deg,#d97706,#b45309)',fgColor:'#fff',name:'DataFlow',type:'Analytics & BI',loc:'Berlin, Germany · 680 employees',score:'7.1',scoreColor:'var(--amber)',founded:2012,tagline:'Stable, profitable, and honest about the gap.',desc:'DataFlow is one of Berlin's longest-running analytics companies. Stable and profitable, but pay is 10-15% below market. Strong job security, weak salary growth.',metrics:[{v:'7.1',l:'Verity Score',c:'var(--amber-bg)',t:'var(--amber)'},{v:'74%',l:'Recruiter reply',c:'var(--amber-bg)',t:'var(--amber)'},{v:'8.1%',l:'Turnover/yr',c:'var(--amber-bg)',t:'var(--amber)'}],
+  salaries:[{r:'Engineering Lead',s:'€80k – €95k',n:'7 verified',min:80,med:87,max:95},{r:'Data Engineer',s:'€62k – €78k',n:'9 verified',min:62,med:70,max:78},{r:'Product Manager',s:'€65k – €82k',n:'6 verified',min:65,med:73,max:82},{r:'Backend Dev',s:'€58k – €75k',n:'11 verified',min:58,med:66,max:75}],
+  reviews:[{score:'3.5',txt:'Stable job, below-market pay. If you push, you get a raise — but only after you have a competing offer. Shouldn't work that way.',role:'Senior Backend',tenure:'4y'},{score:'4.2',txt:'No layoffs in 8 years is genuinely remarkable. But I left for a 22% raise elsewhere. Make of that what you will.',role:'Data Engineer',tenure:'5y'}],
+  mgr:{axes:['Communicates clearly','Fair feedback','Supports growth','Respects limits','Accountability','Inspires team'],scores:[3.8,3.5,3.2,4.2,3.6,3.4],dist:[[30,40,22,8],[25,38,28,9],[20,35,32,13],[45,35,16,4],[32,38,24,6],[28,36,26,10]]},
+  culture:[6.8,7.5,7.2,6.4,6.8,5.9],
+  interview:{diff:'Easy',offer:52,days:10,pos:61,qs:['Walk us through a technical system you architected.','How do you handle stakeholders who want immediate results?','What's your experience with legacy codebases?']}
+  ,similar:['cloudstack','nexora','startuphub']},
+
+  startuphub:{init:'SH',bg:'linear-gradient(135deg,#dc2626,#991b1b)',fgColor:'#fff',name:'StartupHub',type:'VC-backed Platform',loc:'London, UK · 90 employees',score:'5.8',scoreColor:'var(--red)',founded:2018,tagline:'High growth. High risk. Check the manager scores.',desc:'StartupHub is a VC-backed platform for early-stage founders. Fast-moving but flagged for toxic management culture. CEO James OBrien has a 3.2 manager score. 3 PMs left Q1 2026.',metrics:[{v:'5.8',l:'Verity Score',c:'var(--red-light)',t:'var(--red)'},{v:'41%',l:'Recruiter reply',c:'var(--red-light)',t:'var(--red)'},{v:'31%',l:'Turnover/yr',c:'var(--red-light)',t:'var(--red)'}],
+  salaries:[{r:'Product Manager',s:'€72k – €90k',n:'4 verified',min:72,med:81,max:90},{r:'Engineering Lead',s:'€85k – €105k',n:'3 verified',min:85,med:95,max:105},{r:'Growth Manager',s:'€60k – €80k',n:'2 verified',min:60,med:70,max:80}],
+  reviews:[{score:'2.0',txt:'Left after 8 months. Public criticism in all-hands. James calls it "direct feedback." Three PMs quit Q1. Not a coincidence.',role:'Former PM',tenure:'8mo'},{score:'2.5',txt:'The salary was real. The culture was not. 41% recruiter response rate is the public face of private contempt for candidates.',role:'Former Eng Lead',tenure:'11mo'}],
+  mgr:{axes:['Communicates clearly','Fair feedback','Supports growth','Respects limits','Accountability','Inspires team'],scores:[2.8,2.4,3.1,2.2,3.0,2.9],dist:[[8,22,38,32],[5,18,40,37],[12,28,36,24],[4,14,38,44],[10,26,38,26],[9,24,40,27]]},
+  culture:[4.2,3.8,4.8,6.2,5.5,4.0],
+  interview:{diff:'Easy',offer:61,days:7,pos:39,qs:['Why do you want to work in a fast-paced startup environment?','How do you handle ambiguity and changing priorities?','What's your biggest weakness?']}
+  ,similar:['nexora','growthlabs','cloudstack']},
+
+  cloudstack:{init:'CS',bg:'linear-gradient(135deg,#0891b2,#0e7490)',fgColor:'#fff',name:'CloudStack',type:'Cloud Infrastructure',loc:'Prague, CZ · 230 employees',score:'7.8',scoreColor:'var(--green)',founded:2016,tagline:'Infrastructure without surprises.',desc:'CloudStack provides DevOps tooling and managed Kubernetes. Solid culture, honest pay, genuine remote trust. 91% recruiter response rate and growing.',metrics:[{v:'7.8',l:'Verity Score',c:'var(--green-bg)',t:'var(--green)'},{v:'91%',l:'Recruiter reply',c:'var(--blue-bg)',t:'var(--blue)'},{v:'6.2%',l:'Turnover/yr',c:'var(--green-bg)',t:'var(--green)'}],
+  salaries:[{r:'DevOps Lead',s:'€68k – €88k',n:'5 verified',min:68,med:78,max:88},{r:'Platform Eng',s:'€60k – €78k',n:'6 verified',min:60,med:69,max:78},{r:'SRE',s:'€70k – €90k',n:'4 verified',min:70,med:80,max:90}],
+  reviews:[{score:'4.5',txt:'My manager saw his Verity ratings and came to ask what he could improve. Honestly shocked me. Its working.',role:'DevOps Lead',tenure:'2y'},{score:'4.0',txt:'Pay is fair, not exceptional. Culture is genuinely good. Hybrid done right — 2 days office, 3 remote, no monitoring.',role:'Platform Engineer',tenure:'1.5y'}],
+  mgr:{axes:['Communicates clearly','Fair feedback','Supports growth','Respects limits','Accountability','Inspires team'],scores:[4.2,4.0,4.1,4.5,4.0,3.9],dist:[[52,32,12,4],[48,35,13,4],[50,34,12,4],[62,28,8,2],[48,36,12,4],[44,38,14,4]]},
+  culture:[8.0,8.3,7.8,7.6,8.8,7.4],
+  interview:{diff:'Moderate',offer:38,days:16,pos:71,qs:['Design a CI/CD pipeline for a microservices architecture.','How do you handle an incident where a critical service is down?','What's your approach to infrastructure as code?']}
+  ,similar:['nexora','quantum','dataflow']}
 };
 
 function starSVG(filled){return `<svg width="14" height="14" viewBox="0 0 24 24" fill="${filled?'#f59e0b':'none'}" stroke="#f59e0b" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;}
@@ -1588,200 +1700,204 @@ function showProfile(key){
   go('profile');
 }
 
+function radarSVG(values,labels){
+  const sz=220,cx=110,cy=110,r=80;
+  const n=values.length;
+  const angles=values.map((_,i)=>(i*2*Math.PI/n)-Math.PI/2);
+  const grids=[0.33,0.67,1].map(f=>{
+    const pts=angles.map(a=>`${cx+r*f*Math.cos(a)},${cy+r*f*Math.sin(a)}`).join(' ');
+    return `<polygon points="${pts}" fill="none" stroke="#e8e8e8" stroke-width="1"/>`;
+  }).join('');
+  const axes=angles.map(a=>`<line x1="${cx}" y1="${cy}" x2="${cx+r*Math.cos(a)}" y2="${cy+r*Math.sin(a)}" stroke="#e8e8e8" stroke-width="1"/>`).join('');
+  const dataPts=values.map((v,i)=>{const f=v/10;return `${cx+r*f*Math.cos(angles[i])},${cy+r*f*Math.sin(angles[i])}`;}).join(' ');
+  const lbls=labels.map((l,i)=>{
+    const a=angles[i];const lx=cx+(r+28)*Math.cos(a);const ly=cy+(r+28)*Math.sin(a);
+    return `<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" font-size="9.5" fill="#888" font-family="system-ui,sans-serif">${l}</text>`;
+  }).join('');
+  const dots=values.map((v,i)=>{const f=v/10;return `<circle cx="${(cx+r*f*Math.cos(angles[i])).toFixed(1)}" cy="${(cy+r*f*Math.sin(angles[i])).toFixed(1)}" r="3" fill="#C41E3A"/>`;}).join('');
+  return `<svg width="${sz}" height="${sz}" viewBox="0 0 ${sz} ${sz}">${grids}${axes}<polygon points="${dataPts}" fill="rgba(196,30,58,.15)" stroke="#C41E3A" stroke-width="2"/>${dots}${lbls}</svg>`;
+}
+
+function scoringRingHTML(score,color){
+  const circ=314.16;const pct=parseFloat(score)/10;
+  const offset=(1-pct)*circ;
+  const c=pct>=0.8?'var(--green)':pct>=0.7?'var(--amber)':'var(--red)';
+  return `<svg class="ci-score-ring" width="110" height="110" viewBox="0 0 110 110">
+    <circle cx="55" cy="55" r="46" fill="none" stroke="#f0f0f0" stroke-width="9"/>
+    <circle cx="55" cy="55" r="46" fill="none" stroke="${c}" stroke-width="9"
+      stroke-dasharray="${(pct*circ*46/50).toFixed(1)} ${circ}"
+      stroke-linecap="round" transform="rotate(-90 55 55)"
+      style="transition:stroke-dasharray .8s ease;"/>
+    <text x="55" y="50" text-anchor="middle" font-size="24" font-weight="800" fill="${c}" font-family="system-ui,sans-serif">${score}</text>
+    <text x="55" y="66" text-anchor="middle" font-size="11" fill="#888" font-family="system-ui,sans-serif">/ 10</text>
+    <text x="55" y="80" text-anchor="middle" font-size="9" fill="#888" font-family="system-ui,sans-serif">VERITY SCORE</text>
+  </svg>`;
+}
+
 function showCompany(key){
   const c=companies[key];if(!c)return;
   const el=document.getElementById('view-company');
-  const warningBanner=c.score<'7.0'?`<div style="background:var(--red-light);border-left:4px solid var(--red);padding:10px 14px;font-size:12px;"><strong style="color:var(--red);">⚠ Low Verity Score warning.</strong> ${c.name} has a score below 7.0. Multiple verified employees report management issues. Read Intel threads before applying.</div>`:'';
-  const metricsHtml=c.metrics.map(m=>`<div class="co-metric" style="background:${m.c};"><div class="co-metric-val" style="color:${m.t};">${m.v}</div><div class="co-metric-lbl">${m.l}</div></div>`).join('');
-  const salHtml=c.salaries.map(s=>`<div class="salary-row"><div><div class="sal-role">${s.r}</div><div class="sal-count">${s.n}</div></div><div class="sal-range">${s.s}</div></div>`).join('');
-  const revHtml=c.reviews.map(r=>`<div class="review-card"><div class="review-header"><div style="display:flex;gap:2px;">${Array.from({length:5},(_,i)=>starSVG(i<Math.round(parseFloat(r.score)))).join('')}</div><span class="pill pill-green" style="font-size:9px;"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · ${r.role}</span></div>${r.txt}</div>`).join('');
-  el.innerHTML=`<div class="card"><div class="co-banner" style="position:relative;"><div class="back-link" onclick="goBack()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</div></div><div style="padding:0 20px 16px;"><div style="display:flex;align-items:flex-end;gap:14px;margin-top:-38px;margin-bottom:12px;flex-wrap:wrap;"><div class="co-logo" style="background:${c.bg};color:${c.fgColor};">${c.init}</div><div style="display:flex;gap:8px;margin-left:auto;flex-wrap:wrap;"><button class="btn btn-primary btn-sm" onclick="showCompanyJobs('${key}')">View open roles</button><button class="btn btn-ghost btn-sm" onclick="toggleFollowCompany(this,'${c.name}')">Follow</button></div></div><div style="font-size:22px;font-weight:800;margin-bottom:4px;">${c.name}</div><div style="font-size:13px;color:var(--muted);margin-bottom:4px;">${c.type} · ${c.loc}</div><div style="font-size:12px;font-style:italic;color:var(--muted);margin-bottom:8px;">"${c.tagline}"</div></div>${warningBanner}<div style="padding:0 20px;"><div class="co-metrics">${metricsHtml}</div></div><div class="profile-section"><div class="ps-title">About</div><div style="font-size:13px;line-height:1.7;">${c.desc}</div></div><div class="profile-section"><div class="ps-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:middle;margin-right:4px;"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Verified Salaries</div>${salHtml}</div><div class="profile-section"><div class="ps-title">Employee reviews <span class="pill pill-green" style="font-size:10px;">Verified</span></div>${revHtml}</div></div>`;
+  const score=parseFloat(c.score);
+  
+  // Warning banner
+  const warningBanner=score<7.0?`<div style="background:var(--red-light);border-left:4px solid var(--red);padding:12px 20px;font-size:13px;line-height:1.5;"><strong style="color:var(--red);">⚠ Low Verity Score warning.</strong> ${c.name} scores below 7.0. Multiple verified employees report management issues. Review Intel threads before applying.</div>`:'';
+  
+  // Score ring + dimensions
+  const dimLabels=['Culture','Management','Salary','Growth','Work-Life'];
+  const dimColors=['var(--green)','var(--amber)','var(--blue)','var(--green)','var(--green)'];
+  const dimValues=c.metrics.map(m=>parseFloat(m.v)||0);
+  // Build dimension scores from culture array
+  const cultureDims=c.culture||[8,8,8,8,8,8];
+  const dimScores={Culture:cultureDims[0],Management:c.mgr?Math.round(c.mgr.scores.reduce((a,b)=>a+b,0)/c.mgr.scores.length*10)/10:7,Salary:cultureDims[5]||8,Growth:cultureDims[5],WLB:cultureDims[1]};
+  const dimsArr=[{l:'Culture',v:dimScores.Culture},{l:'Management',v:dimScores.Management},{l:'Salary Transparency',v:dimScores.Salary},{l:'Career Growth',v:dimScores.Growth},{l:'Work-Life Balance',v:dimScores.WLB}];
+  const scoreColor=score>=8.5?'var(--green)':score>=7.0?'var(--amber)':'var(--red)';
+  
+  const dimsHtml=dimsArr.map(d=>{
+    const pct=(d.v/10*100).toFixed(0);
+    const col=d.v>=8?'var(--green)':d.v>=7?'var(--amber)':'var(--red)';
+    return `<div class="ci-dim-row"><div class="ci-dim-label">${d.l}</div><div class="ci-dim-bar-wrap"><div class="ci-dim-fill" style="width:${pct}%;background:${col};"></div></div><div class="ci-dim-val" style="color:${col};">${d.v.toFixed(1)}</div></div>`;
+  }).join('');
+  
+  // Manager ratings
+  let mgrHtml='';
+  if(c.mgr){
+    const legend=`<div class="mgr-legend"><div class="mgr-leg-item"><div class="mgr-leg-dot" style="background:#1a6329;"></div>Excellent</div><div class="mgr-leg-item"><div class="mgr-leg-dot" style="background:#4ade80;"></div>Good</div><div class="mgr-leg-item"><div class="mgr-leg-dot" style="background:#fbbf24;"></div>Average</div><div class="mgr-leg-item"><div class="mgr-leg-dot" style="background:#ef4444;"></div>Poor</div></div>`;
+    const rows=c.mgr.axes.map((ax,i)=>{
+      const d=c.mgr.dist[i];const sc=c.mgr.scores[i];
+      const col=sc>=4.5?'var(--green)':sc>=3.5?'var(--amber)':'var(--red)';
+      return `<div class="mgr-axis-row"><div class="mgr-axis-label">${ax}</div><div class="mgr-dist-bar"><div class="mgr-dist-seg mgr-dist-exc" style="width:${d[0]}%;"></div><div class="mgr-dist-seg mgr-dist-good" style="width:${d[1]}%;"></div><div class="mgr-dist-seg mgr-dist-avg" style="width:${d[2]}%;"></div><div class="mgr-dist-seg mgr-dist-poor" style="width:${d[3]}%;"></div></div><div class="mgr-axis-score" style="color:${col};">${sc.toFixed(1)}★</div></div>`;
+    }).join('');
+    mgrHtml=`<div class="profile-section"><div class="ps-title" style="display:flex;align-items:center;justify-content:space-between;"><span>Manager Ratings <span style="font-size:12px;color:var(--muted);font-weight:400;">(verified direct reports)</span></span></div>${legend}<div class="mgr-section">${rows}</div></div>`;
+  }
+  
+  // Salary bar charts
+  const globalMin=Math.min(...c.salaries.map(s=>s.min));
+  const globalMax=Math.max(...c.salaries.map(s=>s.max));
+  const range=globalMax-globalMin||1;
+  const salChartHtml=c.salaries.map(s=>{
+    const pMin=((s.min-globalMin)/range*80+5).toFixed(1);
+    const pMax=((s.max-globalMin)/range*80+5).toFixed(1);
+    const pMed=((s.med-globalMin)/range*80+5).toFixed(1);
+    const w=(parseFloat(pMax)-parseFloat(pMin)).toFixed(1);
+    return `<div class="sal-chart-item">
+      <div class="sal-chart-header"><div class="sal-chart-role">${s.r}</div><div class="sal-chart-range">${s.s}</div></div>
+      <div class="sal-bar-track" style="margin-bottom:28px;">
+        <div class="sal-bar-fill" style="left:${pMin}%;width:${w}%;"></div>
+        <div class="sal-bar-med" style="left:${pMed}%;"><div class="sal-bar-label">Median €${s.med}k</div></div>
+        <div class="sal-bar-p25" style="left:${pMin}%;">€${s.min}k</div>
+        <div class="sal-bar-p75" style="left:${pMax}%;">€${s.max}k</div>
+      </div>
+      <div class="sal-verified"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>${s.n}</div>
+    </div>`;
+  }).join('');
+  
+  // Culture radar
+  const cultureLabels=['Transparency','Work-Life','D&I','Innovation','Remote','Growth'];
+  const cultureVals=c.culture||[8,8,8,8,8,8];
+  const radarSvg=radarSVG(cultureVals,cultureLabels);
+  const cultureColors=['var(--blue)','var(--green)','var(--amber)','var(--red)','var(--green)','var(--green)'];
+  const radarLegend=cultureLabels.map((l,i)=>{
+    const v=cultureVals[i];const col=v>=8.5?'var(--green)':v>=7?'var(--amber)':'var(--red)';
+    return `<div class="radar-leg-row"><span class="radar-leg-label">${l}</span><span class="radar-leg-val" style="color:${col};">${v.toFixed(1)}</span></div>`;
+  }).join('');
+  
+  // Interview intel
+  let intHtml='';
+  if(c.interview){
+    const iv=c.interview;
+    const diffCol=iv.diff==='Easy'?'var(--green)':iv.diff==='Moderate'?'var(--amber)':'var(--red)';
+    const posCol=iv.pos>=70?'var(--green)':iv.pos>=50?'var(--amber)':'var(--red)';
+    const offerCol=iv.offer>=40?'var(--green)':iv.offer>=25?'var(--amber)':'var(--red)';
+    const qsHtml=iv.qs.map((q,i)=>`<div class="int-q-item"><div class="int-q-num">${i+1}</div><div>${q}</div></div>`).join('');
+    intHtml=`<div class="profile-section"><div class="ps-title">Interview Intelligence</div>
+      <div class="interview-stats">
+        <div class="int-stat"><div class="int-stat-val" style="color:${diffCol};">${iv.diff}</div><div class="int-stat-lbl">Difficulty</div></div>
+        <div class="int-stat"><div class="int-stat-val" style="color:${offerCol};">${iv.offer}%</div><div class="int-stat-lbl">Offer rate</div></div>
+        <div class="int-stat"><div class="int-stat-val">${iv.days}d</div><div class="int-stat-lbl">Avg. process</div></div>
+        <div class="int-stat"><div class="int-stat-val" style="color:${posCol};">${iv.pos}%</div><div class="int-stat-lbl">Positive exp.</div></div>
+      </div>
+      <div class="int-questions"><div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;">Top reported questions</div>${qsHtml}</div>
+    </div>`;
+  }
+  
+  // "Should I apply?" recommendation
+  let applyRec;
+  if(score>=8.5){applyRec={bg:'var(--green)',verdict:'✓ Strong Yes — Apply',sub:`Top ${Math.round((10-score)*8)}% of employers in ${c.type}. High transparency, fair pay, low turnover.`};}
+  else if(score>=7.0){applyRec={bg:'#d97706',verdict:'◎ Yes, with eyes open',sub:`Solid employer. Check the specific team\'s manager ratings before committing.`};}
+  else{applyRec={bg:'var(--red)',verdict:'⚠ Proceed with caution',sub:`Score ${c.score}/10. Flagged for management issues. Talk to current employees first.`};}
+  const applyHtml=`<div class="apply-rec" style="background:${applyRec.bg};border-radius:0;"><div class="apply-rec-txt"><div class="apply-rec-verdict" style="color:#fff;">${applyRec.verdict}</div><div class="apply-rec-sub" style="color:rgba(255,255,255,.85);">${applyRec.sub}</div></div><button class="btn" style="background:rgba(255,255,255,.2);color:#fff;border:1.5px solid rgba(255,255,255,.4);flex-shrink:0;" onclick="showCompanyJobs('${key}')">View open roles</button></div>`;
+  
+  // Reviews
+  const revHtml=c.reviews.map(r=>{
+    const sc=parseFloat(r.score);
+    const stars=Array.from({length:5},(_,i)=>starSVG(i<Math.round(sc))).join('');
+    const initials=r.role.split(' ').map(w=>w[0]).join('').slice(0,2);
+    return `<div class="review-card"><div class="review-header"><div style="display:flex;gap:2px;">${stars}</div><span class="pill pill-green" style="font-size:9px;"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · ${r.role} · ${r.tenure||''}</span></div><div style="margin-top:8px;font-size:13px;line-height:1.65;">${r.txt}</div></div>`;
+  }).join('');
+  
+  // Similar companies
+  const simHtml=(c.similar||[]).slice(0,3).map(sk=>{
+    const sc=companies[sk];if(!sc)return'';
+    const sScore=parseFloat(sc.score);const sCol=sScore>=8?'var(--green)':sScore>=7?'var(--amber)':'var(--red)';
+    return `<div class="sim-co-card" onclick="showCompany('${sk}')"><div class="sim-co-logo" style="background:${sc.bg.includes('gradient')?sc.bg:'none;background:'+sc.bg};color:${sc.fgColor};">${sc.init}</div><div class="sim-co-name">${sc.name}</div><div class="sim-co-score" style="color:${sCol};">${sc.score} / 10</div></div>`;
+  }).join('');
+  
+  el.innerHTML=`<div class="card">
+    <div class="co-banner" style="position:relative;background:${c.bg.includes('gradient')?c.bg:'linear-gradient(135deg,'+c.bg+','+c.bg+')'};"><div class="back-link" onclick="goBack()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</div></div>
+    <div style="padding:0 20px 16px;">
+      <div style="display:flex;align-items:flex-end;gap:14px;margin-top:-38px;margin-bottom:12px;flex-wrap:wrap;">
+        <div class="co-logo" style="background:${c.bg.includes('gradient')?c.bg:'#fff'};color:${c.fgColor};">${c.init}</div>
+        <div style="display:flex;gap:8px;margin-left:auto;flex-wrap:wrap;">
+          <button class="btn btn-primary btn-sm" onclick="showCompanyJobs('${key}')">View open roles</button>
+          <button class="btn btn-ghost btn-sm" onclick="toggleFollowCompany(this,'${c.name}')">Follow</button>
+        </div>
+      </div>
+      <div style="font-size:22px;font-weight:800;margin-bottom:3px;">${c.name}</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:2px;">${c.type} &middot; ${c.loc} &middot; Est. ${c.founded}</div>
+      <div style="font-size:12px;font-style:italic;color:var(--muted);margin-bottom:10px;">"${c.tagline}"</div>
+    </div>
+    ${warningBanner}
+    
+    <div class="profile-section" style="background:#fafafa;border-top:1px solid var(--border-light);">
+      <div class="ci-score-wrap">
+        ${scoringRingHTML(c.score,scoreColor)}
+        <div class="ci-score-dims">${dimsHtml}</div>
+      </div>
+    </div>
+    
+    ${mgrHtml}
+    
+    <div class="profile-section">
+      <div class="ps-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:middle;margin-right:4px;"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Verified Salary Data <span style="font-size:12px;color:var(--muted);font-weight:400;">(EU market)</span></div>
+      ${salChartHtml}
+    </div>
+    
+    <div class="profile-section">
+      <div class="ps-title">Culture Radar</div>
+      <div class="radar-wrap">
+        ${radarSvg}
+        <div class="radar-legend">${radarLegend}</div>
+      </div>
+    </div>
+    
+    ${intHtml}
+    
+    ${applyHtml}
+    
+    <div class="profile-section">
+      <div class="ps-title">Employee Reviews <span class="pill pill-green" style="font-size:10px;vertical-align:middle;">Verified</span></div>
+      ${revHtml}
+    </div>
+    
+    <div class="profile-section" style="padding-bottom:20px;">
+      <div class="ps-title">Similar Companies</div>
+      <div class="similar-grid">${simHtml}</div>
+    </div>
+  </div>`;
   go('company');
 }
 
-// Interactivity
-function toggleLike(id){
-  const lb=document.getElementById('lb-p'+id.replace('p',''));
-  const lc=document.getElementById('lc-p'+id.replace('p',''));
-  if(!lb||!lc)return;
-  const liked=lb.classList.toggle('liked');
-  lc.textContent=parseInt(lc.textContent)+(liked?1:-1);
-  lb.style.color=liked?'var(--red)':'';
-}
-function toggleComments(id){
-  const el=document.getElementById(id);
-  if(el){el.classList.toggle('open');}
-}
-function postComment(input,sectionId){
-  if(!input.value.trim())return;
-  const section=document.getElementById(sectionId);
-  const div=document.createElement('div');div.className='comment';
-  div.innerHTML=`<div class="av av32" style="background:linear-gradient(135deg,#C41E3A,#8B0000);flex-shrink:0;">AM</div><div class="comment-bubble"><div class="comment-author">Alex Mercer</div>${input.value.trim()}</div>`;
-  section.insertBefore(div,section.lastElementChild);
-  input.value='';toast('Comment posted');
-}
-function postCommentBtn(btn,sectionId){
-  const input=btn.previousElementSibling;postComment(input,sectionId);
-}
-function toggleAnswers(id){
-  const el=document.getElementById(id);if(!el)return;
-  const open=el.classList.toggle('open');
-  const btn=el.previousElementSibling;
-  if(btn&&btn.classList.contains('show-more-btn')){
-    const n=el.querySelectorAll('.intel-answer').length;
-    btn.textContent=open?'Show fewer answers':`Show ${n} more answers`;
-  }
-}
-function toggleFollow(btn){
-  const following=btn.textContent==='Following';
-  btn.textContent=following?'Follow':'Following';
-  btn.className=following?'btn btn-ghost btn-xs':'btn btn-primary btn-xs';
-  toast(following?'Unfollowed':'Following — their posts will appear in your feed');
-}
-function connectBtn(btn){
-  if(btn.classList.contains('sent'))return;
-  btn.classList.add('sent');btn.textContent='Pending';
-  toast('Connection request sent!');
-}
-function acceptConnection(btn,name){
-  const row=btn.closest('.activity');
-  btn.parentElement.innerHTML=`<span style="color:var(--green);font-weight:600;font-size:13px;">✓ Connected with ${name}</span>`;
-  toast(`You are now connected with ${name}`);
-}
-function ignoreRequest(btn){
-  const row=btn.closest('.activity');
-  if(row){row.style.opacity='0';setTimeout(()=>row.remove(),300);}
-}
-let currentApplyBtn=null;
-let currentJobKey=null;
-function applyJob(btn,jobKey){
-  currentApplyBtn=btn;
-  currentJobKey=jobKey||currentJobKey;
-  const j=jobs[currentJobKey];
-  if(j){
-    document.getElementById('apply-job-title').textContent='Apply for '+j.title;
-    document.getElementById('apply-company').textContent='at '+j.company;
-  }
-  openModal('apply');
-}
-function submitApplication(){
-  closeModal('apply');
-  if(currentApplyBtn){
-    currentApplyBtn.textContent='Applied ✓';
-    currentApplyBtn.style.background='var(--green)';
-    currentApplyBtn.disabled=true;
-  }
-  toast('Application submitted! Recruiter will reply within 24h.');
-}
-function saveJob(btn){
-  const saved=btn.dataset.saved;
-  if(saved){btn.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg> Save';delete btn.dataset.saved;toast('Removed from saved');}
-  else{btn.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/><line x1="12" y1="7" x2="12" y2="13"/></svg> Saved';btn.dataset.saved='1';toast('Job saved to your list');}
-}
-function sharePost(label){
-  navigator.clipboard?.writeText(window.location.href).catch(()=>{});
-  toast(`Link copied — share "${label}"`);
-}
-function loadMorePosts(){
-  const p=document.getElementById('feed-posts');
-  const loader=p.lastElementChild;
-  const html=`<div class="feed-post"><div class="post-header"><div class="av av48" style="background:linear-gradient(135deg,#be185d,#9d174d);">LM</div><div style="flex:1;min-width:0;"><div><span class="post-name" onclick="showProfile('lara')">Lara Müller</span></div><div class="post-meta">Product Designer · QuantumAI</div><div class="post-time">5 days ago</div></div></div><div class="post-body">Designing for AI means designing for uncertainty. Users don't know what the model will do — and neither do you.<br><br>The UX skill nobody teaches: making ambiguity feel intentional. How to surface confidence scores, show failure states gracefully, and let humans stay in control of the loop.</div><div class="post-actions"><div class="pact" onclick="toggleLike('p9')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> <span>Useful</span></div><div class="pact" onclick="toggleComments('cm9')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> <span>Comment</span></div><div class="pact" onclick="sharePost('Lara\\'s post on AI UX')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> <span>Share</span></div></div><div class="comments-section" id="cm9"><div class="comment-input-row"><div class="av av32" style="background:linear-gradient(135deg,#C41E3A,#8B0000);flex-shrink:0;">AM</div><input class="comment-input" placeholder="Add a comment..." onkeydown="if(event.key==='Enter')postComment(this,'cm9')"><button class="comment-send" onclick="postCommentBtn(this,'cm9')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div></div></div>`;
-  p.insertBefore(document.createRange().createContextualFragment(html),loader);
-  loader.remove();
-  toast('More posts loaded');
-}
 
-// Tabs
-document.querySelectorAll('.feed-tabs').forEach(t=>{
-  t.querySelectorAll('.ftab').forEach(tab=>{
-    tab.addEventListener('click',()=>{t.querySelectorAll('.ftab').forEach(x=>x.classList.remove('active'));tab.classList.add('active');});
-  });
-});
-
-// Modals
-function openModal(id,desc){
-  document.getElementById('modal-'+id)?.classList.add('open');
-  if(id==='unlock'&&desc){const el=document.getElementById('unlock-desc');if(el)el.textContent=`Share your experience about "${desc}" to unlock insider answers.`;}
-}
-function closeModal(id){document.getElementById('modal-'+id)?.classList.remove('open');}
-function submitPost(){closeModal('compose');toast('Post published to the Intel Loop!');}
-function submitIntel(){closeModal('intel');toast('Question posted — first answer usually arrives within 2 hours');}
-function submitUnlock(){closeModal('unlock');toast('Answer submitted! You now have access to all insider answers.');}
-function submitSalary(){closeModal('salary');toast('Salary data submitted anonymously. Thank you for contributing!');}
-
-function saveProfile(){
-  const name=document.getElementById('edit-name').value;
-  const headline=document.getElementById('edit-headline').value;
-  const location=document.getElementById('edit-location').value;
-  // Update the displayed profile
-  const nameEl=document.querySelector('#view-myprofile .profile-hl');
-  const subEl=document.querySelector('#view-myprofile .profile-sub');
-  if(nameEl)nameEl.textContent=name;
-  if(subEl)subEl.textContent=headline+(location?' · '+location:'');
-  // Update sidebar too
-  const sidebarName=document.querySelector('.lsb-name');
-  if(sidebarName)sidebarName.textContent=name;
-  closeModal('editprofile');
-  toast('Profile updated successfully');
-}
-
-function filterSalaries(){
-  const role=document.getElementById('salary-role').value;
-  const loc=document.getElementById('salary-location').value;
-  const exp=document.getElementById('salary-exp').value;
-  const filters=[];
-  if(role)filters.push(role);
-  if(loc)filters.push(loc);
-  if(exp)filters.push(exp);
-  if(filters.length>0){
-    toast('Filtering by: '+filters.join(', '));
-  }
-}
-
-// Share functions
-function openShareModal(name,url){
-  document.getElementById('share-desc').textContent='Share '+name+"'s profile";
-  document.getElementById('share-url').value=url;
-  openModal('share');
-}
-function shareVia(platform){
-  const url=document.getElementById('share-url').value;
-  const text='Check out this profile on Verity';
-  let shareUrl='';
-  switch(platform){
-    case 'linkedin':shareUrl='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(url);break;
-    case 'twitter':shareUrl='https://twitter.com/intent/tweet?url='+encodeURIComponent(url)+'&text='+encodeURIComponent(text);break;
-    case 'whatsapp':shareUrl='https://wa.me/?text='+encodeURIComponent(text+' '+url);break;
-    case 'email':shareUrl='mailto:?subject='+encodeURIComponent('Profile on Verity')+'&body='+encodeURIComponent(text+'\n\n'+url);break;
-  }
-  if(shareUrl)window.open(shareUrl,'_blank');
-  closeModal('share');
-}
-function copyShareLink(){
-  const url=document.getElementById('share-url').value;
-  navigator.clipboard.writeText(url);
-  toast('Link copied to clipboard');
-  closeModal('share');
-}
-
-// Job alerts
-function saveJobAlerts(){
-  const keywords=document.getElementById('alert-keywords').value;
-  const location=document.getElementById('alert-location').value;
-  const score=document.getElementById('alert-score').value;
-  let msg='Job alerts saved';
-  if(keywords)msg+=' for "'+keywords+'"';
-  if(location)msg+=' in '+location;
-  if(score)msg+=' ('+score+'+ score)';
-  closeModal('jobalerts');
-  toast(msg+'!');
-}
-
-// Groups
-const groups={
-  'pm-eu':{name:'Product Managers EU',members:'2.4K',desc:'The largest community of product managers across Europe. Discuss PM career paths, share resources, and connect with peers from top companies.',posts:[{author:'Sarah Chen',role:'Sr. PM · Nexora',text:'Just shipped our Q1 roadmap review process. Happy to share the template that worked for us — DM me.',time:'3 hours ago'},{author:'Marcus Velder',role:'Eng Lead · DataFlow',text:'Looking for PMs who have transitioned from engineering. Coffee chat anyone?',time:'Yesterday'}]},
-  'saas-founders':{name:'SaaS Founders Network',members:'890',desc:'Founders and aspiring founders building B2B SaaS products. Share learnings, get feedback, and find co-founders.',posts:[{author:'Ana Kowalski',role:'Marketing Dir · GrowthLabs',text:'We just hit €1M ARR. AMA about early-stage growth marketing.',time:'5 hours ago'},{author:'David Park',role:'Data Scientist · QuantumAI',text:'Anyone using AI for customer churn prediction? Looking to compare approaches.',time:'2 days ago'}]}
-};
 function showGroup(key){
   const g=groups[key];if(!g)return;
   const postsHtml=g.posts.map(p=>`<div style="padding:12px 0;border-bottom:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div class="av av32" style="background:linear-gradient(135deg,#C41E3A,#8B0000);">?</div><div><div style="font-weight:600;font-size:13px;">${p.author}</div><div style="font-size:11px;color:var(--muted);">${p.role} · ${p.time}</div></div></div><div style="font-size:13px;line-height:1.5;">${p.text}</div></div>`).join('');
@@ -2029,7 +2145,28 @@ function toast(msg){
 // Search
 function onSearch(v){
   const drop=document.getElementById('sDrop');
-  drop.classList.toggle('open',v.length>0);
+  if(!v){drop.innerHTML=drop._original||drop.innerHTML;drop.classList.remove('open');return;}
+  drop.classList.add('open');
+  const q=v.toLowerCase();
+  // Filter companies
+  const coMatches=Object.entries(companies).filter(([k,c])=>c.name.toLowerCase().includes(q)).slice(0,4);
+  // Filter profiles
+  const profKeys=Object.keys(profiles||{});
+  const profMatches=profKeys.filter(k=>{const p=profiles[k];return p&&(p.name.toLowerCase().includes(q)||p.co.toLowerCase().includes(q));}).slice(0,3);
+  let html2='';
+  if(profMatches.length){
+    html2+=`<div style="padding:8px 14px;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;">People</div>`;
+    html2+=profMatches.map(k=>{const p=profiles[k];return `<div class="sdrop-item" onclick="showProfile('${k}')"><div class="av av32" style="background:${p.bg};">${p.initials}</div><div><div style="font-weight:600;">${p.name}</div><div style="font-size:11px;color:var(--muted);">${p.title} · ${p.co}</div></div></div>`;}).join('');
+  }
+  if(coMatches.length){
+    html2+=`<div style="padding:8px 14px;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;border-top:1px solid var(--border-light);">Companies</div>`;
+    html2+=coMatches.map(([k,c])=>{
+      const sc=parseFloat(c.score);const col=sc>=8?'var(--green)':sc>=7?'var(--amber)':'var(--red)';
+      return `<div class="sdrop-item" onclick="showCompany('${k}')"><div style="width:32px;height:32px;background:${c.bg};border-radius:6px;display:flex;align-items:center;justify-content:center;color:${c.fgColor};font-weight:800;font-size:11px;flex-shrink:0;">${c.init}</div><div><div style="font-weight:600;">${c.name}</div><div style="font-size:11px;color:${col};font-weight:600;">${sc>=7?'':'⚠ '}Score: ${c.score} / 10</div></div></div>`;
+    }).join('');
+  }
+  if(!html2)html2=`<div style="padding:14px;font-size:13px;color:var(--muted);text-align:center;">No results for "${v}"</div>`;
+  drop.innerHTML=html2;
 }
 
 // Keyboard support for role="button" elements and Escape to close modals
