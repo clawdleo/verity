@@ -767,21 +767,39 @@ body.on-landing{padding-bottom:0;}
   <div class="card">
     <div class="section-hdr"><h3>People you might know</h3><span class="more-link">See all</span></div>
     <div class="feed-tabs" id="netTabs">
-      <div class="ftab active">Suggested</div>
-      <div class="ftab">In your industry</div>
-      <div class="ftab">Pending (3)</div>
+      <div class="ftab active" onclick="filterNetwork('suggested',this)">Suggested</div>
+      <div class="ftab" onclick="filterNetwork('industry',this)">In your industry</div>
+      <div class="ftab" onclick="filterNetwork('pending',this)">Pending (3)</div>
     </div>
-    <div class="net-grid">
-      <div class="net-card"><div class="av av72" style="background:linear-gradient(135deg,#2563eb,#1e40af);margin:0 auto;" onclick="showProfile('sarah')">SC</div><div class="net-name" onclick="showProfile('sarah')">Sarah Chen</div><div class="net-title">Sr. PM · Nexora Tech, Amsterdam</div><div class="pill pill-green" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · 4.8★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">14 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
-      <div class="net-card"><div class="av av72" style="background:linear-gradient(135deg,#d97706,#b45309);margin:0 auto;" onclick="showProfile('marcus')">MV</div><div class="net-name" onclick="showProfile('marcus')">Marcus Velder</div><div class="net-title">Eng Lead · DataFlow, Berlin</div><div class="pill pill-green" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · 4.6★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">8 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
-      <div class="net-card"><div class="av av72" style="background:linear-gradient(135deg,#7c3aed,#5b21b6);margin:0 auto;" onclick="showProfile('ana')">AK</div><div class="net-name" onclick="showProfile('ana')">Ana Kowalski</div><div class="net-title">Marketing Dir · GrowthLabs, Warsaw</div><div class="pill pill-green" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · 4.9★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">22 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
-      <div class="net-card"><div class="av av72" style="background:linear-gradient(135deg,#dc2626,#991b1b);margin:0 auto;" onclick="showProfile('james')">JO</div><div class="net-name" onclick="showProfile('james')">James O'Brien</div><div class="net-title">CEO · StartupHub, London</div><div class="pill pill-red" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>⚠ 3.2★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">5 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
-      <div class="net-card"><div class="av av72" style="background:linear-gradient(135deg,#059669,#047857);margin:0 auto;" onclick="showProfile('elena')">ER</div><div class="net-name" onclick="showProfile('elena')">Elena Russo</div><div class="net-title">Sr. UX Designer · CreativeWorks, Milan</div><div class="pill pill-green" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · 4.7★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">19 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
-      <div class="net-card"><div class="av av72" style="background:linear-gradient(135deg,#d97706,#b45309);margin:0 auto;" onclick="showProfile('thomas')">TN</div><div class="net-name" onclick="showProfile('thomas')">Thomas Novak</div><div class="net-title">DevOps Lead · CloudStack, Prague</div><div class="pill pill-green" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · 4.5★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">7 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
-      <div class="net-card"><div class="av av72" style="background:linear-gradient(135deg,#be185d,#9d174d);margin:0 auto;" onclick="showProfile('lara')">LM</div><div class="net-name" onclick="showProfile('lara')">Lara Müller</div><div class="net-title">Product Designer · QuantumAI, Remote</div><div class="pill pill-green" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · 4.8★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">11 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
-      <div class="net-card"><div class="av av72" style="background:linear-gradient(135deg,#1d4ed8,#1e3a8a);margin:0 auto;" onclick="showProfile('filip')">FK</div><div class="net-name" onclick="showProfile('filip')">Filip Kral</div><div class="net-title">Eng Manager · Nexora Tech, Amsterdam</div><div class="pill pill-green" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · 4.7★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">16 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
-      <div class="net-card"><div class="av av72" style="background:linear-gradient(135deg,#0e7490,#164e63);margin:0 auto;" onclick="showProfile('zara')">ZA</div><div class="net-name" onclick="showProfile('zara')">Zara Ahmed</div><div class="net-title">Data Scientist · GrowthLabs, Warsaw</div><div class="pill pill-green" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · 4.6★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">9 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
-      <div class="net-card"><div class="av av72" style="background:linear-gradient(135deg,#0891b2,#0e7490);margin:0 auto;" onclick="showProfile('david')">DP</div><div class="net-name" onclick="showProfile('david')">David Park</div><div class="net-title">Data Scientist · QuantumAI, Seoul</div><div class="pill pill-green" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · 4.7★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">3 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
+    <div class="net-grid" id="net-suggested">
+      <div class="net-card" data-industry="product"><div class="av av72" style="background:linear-gradient(135deg,#2563eb,#1e40af);margin:0 auto;" onclick="showProfile('sarah')">SC</div><div class="net-name" onclick="showProfile('sarah')">Sarah Chen</div><div class="net-title">Sr. PM · Nexora Tech, Amsterdam</div><div class="pill pill-green" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · 4.8★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">14 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
+      <div class="net-card" data-industry="engineering"><div class="av av72" style="background:linear-gradient(135deg,#d97706,#b45309);margin:0 auto;" onclick="showProfile('marcus')">MV</div><div class="net-name" onclick="showProfile('marcus')">Marcus Velder</div><div class="net-title">Eng Lead · DataFlow, Berlin</div><div class="pill pill-green" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · 4.6★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">8 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
+      <div class="net-card" data-industry="marketing"><div class="av av72" style="background:linear-gradient(135deg,#7c3aed,#5b21b6);margin:0 auto;" onclick="showProfile('ana')">AK</div><div class="net-name" onclick="showProfile('ana')">Ana Kowalski</div><div class="net-title">Marketing Dir · GrowthLabs, Warsaw</div><div class="pill pill-green" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · 4.9★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">22 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
+      <div class="net-card" data-industry="leadership"><div class="av av72" style="background:linear-gradient(135deg,#dc2626,#991b1b);margin:0 auto;" onclick="showProfile('james')">JO</div><div class="net-name" onclick="showProfile('james')">James O'Brien</div><div class="net-title">CEO · StartupHub, London</div><div class="pill pill-red" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>⚠ 3.2★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">5 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
+      <div class="net-card" data-industry="design"><div class="av av72" style="background:linear-gradient(135deg,#059669,#047857);margin:0 auto;" onclick="showProfile('elena')">ER</div><div class="net-name" onclick="showProfile('elena')">Elena Russo</div><div class="net-title">Sr. UX Designer · CreativeWorks, Milan</div><div class="pill pill-green" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · 4.7★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">19 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
+      <div class="net-card" data-industry="engineering"><div class="av av72" style="background:linear-gradient(135deg,#d97706,#b45309);margin:0 auto;" onclick="showProfile('thomas')">TN</div><div class="net-name" onclick="showProfile('thomas')">Thomas Novak</div><div class="net-title">DevOps Lead · CloudStack, Prague</div><div class="pill pill-green" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · 4.5★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">7 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
+      <div class="net-card" data-industry="product"><div class="av av72" style="background:linear-gradient(135deg,#be185d,#9d174d);margin:0 auto;" onclick="showProfile('lara')">LM</div><div class="net-name" onclick="showProfile('lara')">Lara Müller</div><div class="net-title">Product Designer · QuantumAI, Remote</div><div class="pill pill-green" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · 4.8★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">11 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
+      <div class="net-card" data-industry="product"><div class="av av72" style="background:linear-gradient(135deg,#1d4ed8,#1e3a8a);margin:0 auto;" onclick="showProfile('filip')">FK</div><div class="net-name" onclick="showProfile('filip')">Filip Kral</div><div class="net-title">Eng Manager · Nexora Tech, Amsterdam</div><div class="pill pill-green" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · 4.7★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">16 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
+      <div class="net-card" data-industry="data"><div class="av av72" style="background:linear-gradient(135deg,#0e7490,#164e63);margin:0 auto;" onclick="showProfile('zara')">ZA</div><div class="net-name" onclick="showProfile('zara')">Zara Ahmed</div><div class="net-title">Data Scientist · GrowthLabs, Warsaw</div><div class="pill pill-green" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · 4.6★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">9 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
+      <div class="net-card" data-industry="data"><div class="av av72" style="background:linear-gradient(135deg,#0891b2,#0e7490);margin:0 auto;" onclick="showProfile('david')">DP</div><div class="net-name" onclick="showProfile('david')">David Park</div><div class="net-title">Data Scientist · QuantumAI, Seoul</div><div class="pill pill-green" style="margin:0 auto 4px;width:fit-content;font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · 4.7★</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px;">3 mutual</div><button class="btn-connect" onclick="connectBtn(this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Connect</button></div>
+    </div>
+    <!-- Pending connections (hidden by default) -->
+    <div id="net-pending" style="display:none;padding:14px;">
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-light);">
+        <div class="av av56" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9);">JH</div>
+        <div style="flex:1;min-width:0;"><div style="font-weight:600;">Julia Hernandez</div><div style="font-size:12px;color:var(--muted);">Senior PM · Spotify, Stockholm</div><div style="font-size:11px;color:var(--muted);">Sent 3 days ago</div></div>
+        <div style="display:flex;gap:6px;"><button class="btn btn-ghost btn-xs" onclick="this.parentNode.parentNode.remove();toast('Request withdrawn')">Withdraw</button></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-light);">
+        <div class="av av56" style="background:linear-gradient(135deg,#f59e0b,#d97706);">RK</div>
+        <div style="flex:1;min-width:0;"><div style="font-weight:600;">Raj Kumar</div><div style="font-size:12px;color:var(--muted);">Engineering Lead · Booking.com</div><div style="font-size:11px;color:var(--muted);">Sent 5 days ago</div></div>
+        <div style="display:flex;gap:6px;"><button class="btn btn-ghost btn-xs" onclick="this.parentNode.parentNode.remove();toast('Request withdrawn')">Withdraw</button></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 0;">
+        <div class="av av56" style="background:linear-gradient(135deg,#10b981,#059669);">MC</div>
+        <div style="flex:1;min-width:0;"><div style="font-weight:600;">Maria Costa</div><div style="font-size:12px;color:var(--muted);">UX Director · N26, Berlin</div><div style="font-size:11px;color:var(--muted);">Sent 1 week ago</div></div>
+        <div style="display:flex;gap:6px;"><button class="btn btn-ghost btn-xs" onclick="this.parentNode.parentNode.remove();toast('Request withdrawn')">Withdraw</button></div>
+      </div>
     </div>
   </div>
 </div><!-- /network -->
@@ -834,7 +852,10 @@ body.on-landing{padding-bottom:0;}
     <div style="background:linear-gradient(135deg,var(--red-light),#fff);border-radius:0;padding:10px 14px;border-bottom:1px solid var(--border-light);font-size:12px;color:var(--text);">
       <strong>How it works:</strong> Answer 1 question to unlock insider answers. All responses are verified and anonymous.
     </div>
-    <div class="feed-tabs" id="intelTabs"><div class="ftab active" onclick="filterIntel('all',this)">All</div><div class="ftab" onclick="filterIntel('salary',this)">Salary</div><div class="ftab" onclick="filterIntel('culture',this)">Culture</div><div class="ftab" onclick="filterIntel('interview',this)">Interview</div></div>
+    <div style="display:flex;align-items:center;gap:8px;padding:8px 14px;border-bottom:1px solid var(--border-light);">
+      <span style="font-size:12px;color:var(--muted);font-weight:600;">Filter:</span>
+      <div class="feed-tabs" id="intelTabs" style="border:none;padding:0;"><div class="ftab active" onclick="filterIntel('all',this)">All</div><div class="ftab" onclick="filterIntel('salary',this)">Salary</div><div class="ftab" onclick="filterIntel('culture',this)">Culture</div><div class="ftab" onclick="filterIntel('interview',this)">Interview</div></div>
+    </div>
 
     <!-- Thread 1 -->
     <div class="intel-post" data-category="culture">
@@ -855,7 +876,7 @@ body.on-landing{padding-bottom:0;}
           Salaries are reviewed annually against market data, not just when you threaten to leave. That alone puts them in the top 10% of employers I've worked at.
         </div>
       </div>
-      <div class="show-more-btn" onclick="toggleAnswers('ia1')">Show 11 more answers</div>
+      <div style="display:flex;gap:8px;margin-top:8px;"><div class="show-more-btn" onclick="toggleAnswers('ia1')">Show 11 more answers</div><button class="btn btn-outline btn-xs" onclick="addIntelAnswer(this.closest('.intel-post'))">Add your answer</button></div>
     </div>
 
     <!-- Thread 2 -->
@@ -873,7 +894,7 @@ body.on-landing{padding-bottom:0;}
           Seoul office pays equivalently in KRW, fully benchmarked to Amsterdam purchasing parity. Equity package is 0.01–0.04% depending on level. Very competitive for the region.
         </div>
       </div>
-      <div class="show-more-btn" onclick="toggleAnswers('ia2')">Show 7 more answers</div>
+      <div style="display:flex;gap:8px;margin-top:8px;"><div class="show-more-btn" onclick="toggleAnswers('ia2')">Show 7 more answers</div><button class="btn btn-outline btn-xs" onclick="addIntelAnswer(this.closest('.intel-post'))">Add your answer</button></div>
     </div>
 
     <!-- Thread 3 -->
@@ -891,7 +912,7 @@ body.on-landing{padding-bottom:0;}
           The €90k offer felt good until week 3. Watched a senior designer get berated in front of the entire design team. Resigned month 4. The 5.8 Verity score is actually generous — real number should be lower.
         </div>
       </div>
-      <div class="show-more-btn" onclick="toggleAnswers('ia3')">Show 20 more answers</div>
+      <div style="display:flex;gap:8px;margin-top:8px;"><div class="show-more-btn" onclick="toggleAnswers('ia3')">Show 20 more answers</div><button class="btn btn-outline btn-xs" onclick="addIntelAnswer(this.closest('.intel-post'))">Add your answer</button></div>
     </div>
 
     <!-- Thread 4 - Locked -->
@@ -924,7 +945,7 @@ body.on-landing{padding-bottom:0;}
           Got a 20% raise by having a competing offer. Before that, 3% annual increases "for performance." Don't be loyal without data.
         </div>
       </div>
-      <div class="show-more-btn" onclick="toggleAnswers('ia5')">Show 9 more answers</div>
+      <div style="display:flex;gap:8px;margin-top:8px;"><div class="show-more-btn" onclick="toggleAnswers('ia5')">Show 9 </div><button class="btn btn-outline btn-xs" onclick="addIntelAnswer(this.closest('.intel-post'))">Add your answer</button></div>
     </div>
 
     <!-- Thread 6 - Locked -->
@@ -1431,6 +1452,41 @@ body.on-landing{padding-bottom:0;}
   </div>
 </div>
 
+<!-- JOB APPLICATION MODAL -->
+<div class="modal-overlay" id="modal-apply" onclick="if(event.target===this)closeModal('apply')">
+  <div class="modal" role="dialog" aria-modal="true" style="max-width:480px;">
+    <div class="modal-close" onclick="closeModal('apply')" aria-label="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+    <h3 id="apply-job-title" style="margin-bottom:4px;">Apply for Senior Product Manager</h3>
+    <p id="apply-company" style="font-size:13px;color:var(--muted);margin-bottom:16px;">at Nexora Tech</p>
+    
+    <div style="background:var(--green-bg);border-radius:8px;padding:12px;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div style="font-size:12px;"><strong style="color:var(--green);">Verity verified profile</strong><br>Your employment history and credentials are verified.</div>
+    </div>
+
+    <label style="font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:4px;">Email</label>
+    <input class="modal-input" id="apply-email" value="alex.mercer@verity.io" readonly style="background:var(--bg);">
+    
+    <label style="font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:4px;">Phone (optional)</label>
+    <input class="modal-input" id="apply-phone" placeholder="+31 6 1234 5678">
+    
+    <label style="font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:4px;">Cover letter</label>
+    <textarea class="modal-input" id="apply-cover" rows="4" style="resize:vertical;font-family:inherit;" placeholder="Tell them why you're interested in this role..."></textarea>
+    
+    <label style="font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:4px;">Resume</label>
+    <div style="border:2px dashed var(--border);border-radius:8px;padding:20px;text-align:center;margin-bottom:12px;cursor:pointer;" onclick="toast('Resume upload coming soon - your Verity profile is shared instead')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" style="margin-bottom:4px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      <div style="font-size:12px;color:var(--muted);">Click to upload or drag & drop</div>
+      <div style="font-size:11px;color:var(--muted);">Your Verity profile will also be shared</div>
+    </div>
+    
+    <div class="modal-footer">
+      <button class="btn btn-ghost btn-sm" onclick="closeModal('apply')">Cancel</button>
+      <button class="btn btn-primary btn-sm" onclick="submitApplication()">Submit Application</button>
+    </div>
+  </div>
+</div>
+
 <!-- MESSAGE MODAL -->
 <div class="modal-overlay" id="modal-message" onclick="if(event.target===this)closeModal('message')">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="msg-recipient-name">
@@ -1539,7 +1595,7 @@ function showCompany(key){
   const metricsHtml=c.metrics.map(m=>`<div class="co-metric" style="background:${m.c};"><div class="co-metric-val" style="color:${m.t};">${m.v}</div><div class="co-metric-lbl">${m.l}</div></div>`).join('');
   const salHtml=c.salaries.map(s=>`<div class="salary-row"><div><div class="sal-role">${s.r}</div><div class="sal-count">${s.n}</div></div><div class="sal-range">${s.s}</div></div>`).join('');
   const revHtml=c.reviews.map(r=>`<div class="review-card"><div class="review-header"><div style="display:flex;gap:2px;">${Array.from({length:5},(_,i)=>starSVG(i<Math.round(parseFloat(r.score)))).join('')}</div><span class="pill pill-green" style="font-size:9px;"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified · ${r.role}</span></div>${r.txt}</div>`).join('');
-  el.innerHTML=`<div class="card"><div class="co-banner" style="position:relative;"><div class="back-link" onclick="goBack()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</div></div><div style="padding:0 20px 16px;"><div style="display:flex;align-items:flex-end;gap:14px;margin-top:-38px;margin-bottom:12px;flex-wrap:wrap;"><div class="co-logo" style="background:${c.bg};color:${c.fgColor};">${c.init}</div><div style="display:flex;gap:8px;margin-left:auto;flex-wrap:wrap;"><button class="btn btn-primary btn-sm" onclick="go('jobs')">View open roles</button><button class="btn btn-ghost btn-sm" onclick="toast('Following ${c.name}')">Follow</button></div></div><div style="font-size:22px;font-weight:800;margin-bottom:4px;">${c.name}</div><div style="font-size:13px;color:var(--muted);margin-bottom:4px;">${c.type} · ${c.loc}</div><div style="font-size:12px;font-style:italic;color:var(--muted);margin-bottom:8px;">"${c.tagline}"</div></div>${warningBanner}<div style="padding:0 20px;"><div class="co-metrics">${metricsHtml}</div></div><div class="profile-section"><div class="ps-title">About</div><div style="font-size:13px;line-height:1.7;">${c.desc}</div></div><div class="profile-section"><div class="ps-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:middle;margin-right:4px;"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Verified Salaries</div>${salHtml}</div><div class="profile-section"><div class="ps-title">Employee reviews <span class="pill pill-green" style="font-size:10px;">Verified</span></div>${revHtml}</div></div>`;
+  el.innerHTML=`<div class="card"><div class="co-banner" style="position:relative;"><div class="back-link" onclick="goBack()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</div></div><div style="padding:0 20px 16px;"><div style="display:flex;align-items:flex-end;gap:14px;margin-top:-38px;margin-bottom:12px;flex-wrap:wrap;"><div class="co-logo" style="background:${c.bg};color:${c.fgColor};">${c.init}</div><div style="display:flex;gap:8px;margin-left:auto;flex-wrap:wrap;"><button class="btn btn-primary btn-sm" onclick="showCompanyJobs('${key}')">View open roles</button><button class="btn btn-ghost btn-sm" onclick="toggleFollowCompany(this,'${c.name}')">Follow</button></div></div><div style="font-size:22px;font-weight:800;margin-bottom:4px;">${c.name}</div><div style="font-size:13px;color:var(--muted);margin-bottom:4px;">${c.type} · ${c.loc}</div><div style="font-size:12px;font-style:italic;color:var(--muted);margin-bottom:8px;">"${c.tagline}"</div></div>${warningBanner}<div style="padding:0 20px;"><div class="co-metrics">${metricsHtml}</div></div><div class="profile-section"><div class="ps-title">About</div><div style="font-size:13px;line-height:1.7;">${c.desc}</div></div><div class="profile-section"><div class="ps-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:middle;margin-right:4px;"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Verified Salaries</div>${salHtml}</div><div class="profile-section"><div class="ps-title">Employee reviews <span class="pill pill-green" style="font-size:10px;">Verified</span></div>${revHtml}</div></div>`;
   go('company');
 }
 
@@ -1596,8 +1652,25 @@ function ignoreRequest(btn){
   const row=btn.closest('.activity');
   if(row){row.style.opacity='0';setTimeout(()=>row.remove(),300);}
 }
-function applyJob(btn){
-  btn.textContent='Applied ✓';btn.style.background='var(--green)';btn.disabled=true;
+let currentApplyBtn=null;
+let currentJobKey=null;
+function applyJob(btn,jobKey){
+  currentApplyBtn=btn;
+  currentJobKey=jobKey||currentJobKey;
+  const j=jobs[currentJobKey];
+  if(j){
+    document.getElementById('apply-job-title').textContent='Apply for '+j.title;
+    document.getElementById('apply-company').textContent='at '+j.company;
+  }
+  openModal('apply');
+}
+function submitApplication(){
+  closeModal('apply');
+  if(currentApplyBtn){
+    currentApplyBtn.textContent='Applied ✓';
+    currentApplyBtn.style.background='var(--green)';
+    currentApplyBtn.disabled=true;
+  }
   toast('Application submitted! Recruiter will reply within 24h.');
 }
 function saveJob(btn){
@@ -1812,25 +1885,110 @@ function filterIntel(category,tabEl){
 // Submit Intel (make visible in feed)
 function submitIntelPost(){
   const input=document.querySelector('#modal-intel input');
+  const categorySelect=document.querySelector('#modal-intel select');
   if(!input||!input.value.trim()){closeModal('intel');toast('Please enter a question');return;}
   const question=input.value.trim();
+  const category=categorySelect?categorySelect.value:'Culture';
   input.value='';
   closeModal('intel');
-  // Add the new question to the intel feed
+  // Add the new question to the intel feed with category
   const feedEl=document.querySelector('#view-intel .card');
   const newPost=document.createElement('div');
   newPost.className='intel-post';
   newPost.style.background='linear-gradient(180deg,#fff9f9,#fff)';
   newPost.innerHTML=`
-    <span class="intel-tag" style="background:var(--green-bg);color:var(--green);">New</span>
+    <span class="intel-tag">${category}</span>
     <div class="intel-q">${question}</div>
     <div class="intel-meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> 0 answers · Just posted by you</div>
+    <div style="margin-top:8px;"><button class="btn btn-outline btn-xs" onclick="toast('Be the first to answer your own question or wait for insider responses')">Add your answer</button></div>
   `;
   const firstPost=feedEl.querySelector('.intel-post');
   if(firstPost){
     firstPost.parentNode.insertBefore(newPost,firstPost);
   }
-  toast('Question posted! You\'ll get notified when insiders answer.');
+  toast('Question posted in '+category+'! Insiders will answer soon.');
+}
+
+// Network filtering
+function filterNetwork(filter,tabEl){
+  document.querySelectorAll('#netTabs .ftab').forEach(t=>t.classList.remove('active'));
+  tabEl.classList.add('active');
+  const suggested=document.getElementById('net-suggested');
+  const pending=document.getElementById('net-pending');
+  if(filter==='pending'){
+    suggested.style.display='none';
+    pending.style.display='block';
+    toast('Showing pending connection requests');
+  }else if(filter==='industry'){
+    suggested.style.display='grid';
+    pending.style.display='none';
+    // Filter to show only product-related people (Alex is a Product Lead)
+    document.querySelectorAll('#net-suggested .net-card').forEach(card=>{
+      const industry=card.dataset.industry;
+      card.style.display=(industry==='product')?'block':'none';
+    });
+    toast('Showing people in Product (your industry)');
+  }else{
+    suggested.style.display='grid';
+    pending.style.display='none';
+    document.querySelectorAll('#net-suggested .net-card').forEach(card=>{
+      card.style.display='block';
+    });
+  }
+}
+
+// Company jobs filter
+function showCompanyJobs(companyKey){
+  go('jobs');
+  setTimeout(()=>{
+    const company=companies[companyKey];
+    if(!company)return;
+    document.querySelectorAll('.job-card').forEach(card=>{
+      const coName=card.querySelector('.job-co')?.textContent||'';
+      if(coName.toLowerCase().includes(company.name.toLowerCase())){
+        card.style.display='block';
+        card.style.background='linear-gradient(180deg,#f0fdf4,#fff)';
+      }else{
+        card.style.display='none';
+      }
+    });
+    toast('Showing jobs at '+company.name);
+  },100);
+}
+
+// Follow company toggle
+function toggleFollowCompany(btn,companyName){
+  const isFollowing=btn.classList.contains('following');
+  if(isFollowing){
+    btn.classList.remove('following');
+    btn.classList.remove('btn-primary');
+    btn.classList.add('btn-ghost');
+    btn.textContent='Follow';
+    toast('Unfollowed '+companyName);
+  }else{
+    btn.classList.add('following');
+    btn.classList.remove('btn-ghost');
+    btn.classList.add('btn-primary');
+    btn.textContent='Following ✓';
+    toast('Following '+companyName);
+  }
+}
+
+// Intel answer/reply (explain: anyone can answer, verified badge shows employment status)
+function addIntelAnswer(postEl){
+  const answerInput=prompt('Share your insider knowledge (your employment will be verified):');
+  if(!answerInput||!answerInput.trim())return;
+  const answersSection=postEl.querySelector('.intel-answer')?.parentNode;
+  if(!answersSection)return;
+  const newAnswer=document.createElement('div');
+  newAnswer.className='intel-answer';
+  newAnswer.style.marginTop='8px';
+  newAnswer.innerHTML=`
+    <div class="intel-ahdr"><div class="av av24" style="background:linear-gradient(135deg,#C41E3A,#8B0000);">AM</div> <strong>Alex Mercer</strong> — Product Lead, Verity <span class="pill pill-green" style="font-size:9px;">Verified</span></div>
+    ${answerInput.trim()}
+  `;
+  answersSection.appendChild(newAnswer);
+  toast('Answer posted! Others can now see your insider perspective.');
 }
 
 // Message functions
