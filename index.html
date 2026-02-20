@@ -525,9 +525,9 @@ body.on-landing{padding-bottom:0;}
     <div class="lsb-title">Product Lead at Verity<br>London, UK</div>
     <div style="text-align:center;margin-bottom:10px;"><span class="pill pill-green"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Verified</span></div>
     <hr class="lsb-divider">
-    <div class="lsb-stat"><span style="color:var(--muted);">Profile views</span><span style="font-weight:700;color:var(--red);">142</span></div>
-    <div class="lsb-stat"><span style="color:var(--muted);">Intel answers</span><span style="font-weight:700;color:var(--red);">8</span></div>
-    <div class="lsb-stat"><span style="color:var(--muted);">Connections</span><span style="font-weight:700;color:var(--red);">247</span></div>
+    <div class="lsb-stat" onclick="go('myprofile')"><span style="color:var(--muted);">Profile views</span><span style="font-weight:700;color:var(--red);">142</span></div>
+    <div class="lsb-stat" onclick="go('intel')"><span style="color:var(--muted);">Intel answers</span><span style="font-weight:700;color:var(--red);">8</span></div>
+    <div class="lsb-stat" onclick="go('network')"><span style="color:var(--muted);">Connections</span><span style="font-weight:700;color:var(--red);">247</span></div>
     <hr class="lsb-divider">
     <div style="padding:8px 14px 2px;font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.5px;">Your Score</div>
     <div style="padding:2px 14px;font-size:24px;font-weight:800;color:var(--red);">4.7<span style="font-size:12px;color:var(--muted);font-weight:400;">/5</span></div>
@@ -549,7 +549,7 @@ body.on-landing{padding-bottom:0;}
     <div style="padding:6px 14px;display:flex;flex-wrap:wrap;gap:6px;">
       <div class="sp-av" style="width:36px;height:36px;font-size:11px;background:linear-gradient(135deg,#2563eb,#1e40af);cursor:pointer;" onclick="showProfile('sarah')">SC</div>
       <div class="sp-av" style="width:36px;height:36px;font-size:11px;background:linear-gradient(135deg,#7c3aed,#5b21b6);cursor:pointer;" onclick="showProfile('ana')">AK</div>
-      <div class="sp-av" style="width:36px;height:36px;font-size:11px;background:linear-gradient(135deg,#0891b2,#0e7490);">DP</div>
+      <div class="sp-av" style="width:36px;height:36px;font-size:11px;background:linear-gradient(135deg,#0891b2,#0e7490);cursor:pointer;" onclick="showProfile('david')">DP</div>
       <div class="sp-av" style="width:36px;height:36px;font-size:11px;background:linear-gradient(135deg,#059669,#047857);cursor:pointer;" onclick="showProfile('elena')">ER</div>
       <div class="sp-av" style="width:36px;height:36px;font-size:11px;background:linear-gradient(135deg,#d97706,#b45309);cursor:pointer;" onclick="showProfile('thomas')">TN</div>
       <div class="sp-av" style="width:36px;height:36px;font-size:11px;background:linear-gradient(135deg,#be185d,#9d174d);cursor:pointer;" onclick="showProfile('lara')">LM</div>
@@ -836,7 +836,7 @@ body.on-landing{padding-bottom:0;}
 <!-- NETWORK -->
 <div id="view-network" class="view">
   <div class="card">
-    <div class="section-hdr"><h3>People you might know</h3><span class="more-link">See all</span></div>
+    <div class="section-hdr"><h3>People you might know</h3><span class="more-link" onclick="filterNetwork('suggested',document.querySelector('#netTabs .ftab'))">See all</span></div>
     <div class="feed-tabs" id="netTabs">
       <div class="ftab active" onclick="filterNetwork('suggested',this)">Suggested</div>
       <div class="ftab" onclick="filterNetwork('industry',this)">In your industry</div>
@@ -879,7 +879,7 @@ body.on-landing{padding-bottom:0;}
 <div id="view-jobs" class="view">
   <div class="card">
     <div class="section-hdr"><h3>Salary-transparent · Manager-rated</h3><button class="btn btn-outline btn-xs" onclick="openModal('jobalerts')">Set alerts</button></div>
-    <div class="feed-tabs" id="jobTabs"><div class="ftab active">For you</div><div class="ftab">Top cultures</div><div class="ftab">Saved (2)</div></div>
+    <div class="feed-tabs" id="jobTabs"><div class="ftab active">For you</div><div class="ftab">Top cultures</div><div class="ftab" id="jobTabSaved">Saved</div></div>
 
     <div class="job-card" onclick="showJob('nexora-pm')">
       <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;"><div style="width:44px;height:44px;background:#1a1a2e;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--red);font-weight:900;font-size:12px;flex-shrink:0;">NT</div><div style="flex:1;min-width:0;"><div class="job-title">Senior Product Manager</div><div class="job-co">Nexora Tech · Amsterdam, NL · Hybrid</div><div class="job-salary"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> €82k – €105k verified</div></div><span class="pill pill-green" style="flex-shrink:0;">8.4</span></div>
@@ -925,7 +925,7 @@ body.on-landing{padding-bottom:0;}
     </div>
     <div style="display:flex;align-items:center;gap:8px;padding:8px 14px;border-bottom:1px solid var(--border-light);">
       <span style="font-size:12px;color:var(--muted);font-weight:600;">Filter:</span>
-      <div class="feed-tabs" id="intelTabs" style="border:none;padding:0;"><div class="ftab active" onclick="filterIntel('all',this)">All</div><div class="ftab" onclick="filterIntel('salary',this)">Salary</div><div class="ftab" onclick="filterIntel('culture',this)">Culture</div><div class="ftab" onclick="filterIntel('interview',this)">Interview</div></div>
+      <div class="feed-tabs" id="intelTabs" style="border:none;padding:0;"><div class="ftab active" onclick="filterIntel('all',this)">All</div><div class="ftab" onclick="filterIntel('salary',this)">Salary</div><div class="ftab" onclick="filterIntel('culture',this)">Culture</div><div class="ftab" onclick="filterIntel('interview',this)">Interview</div><div class="ftab" onclick="filterIntel('management',this)">Management</div></div>
     </div>
 
     <!-- Thread 1 -->
@@ -989,7 +989,7 @@ body.on-landing{padding-bottom:0;}
     <!-- Thread 4 - Locked -->
     <div class="intel-post" data-category="interview">
       <span class="intel-tag">Interview</span>
-      <div class="intel-q">GrowthLabs interview process — what are the actual questions in the final round?</div>
+      <div class="intel-q" onclick="openModal('unlock','GrowthLabs interview intel')" style="cursor:pointer;">GrowthLabs interview process — what are the actual questions in the final round?</div>
       <div class="intel-meta">8 answers · All verified · 1 day ago</div>
       <div class="intel-locked">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;color:var(--muted)"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -1022,7 +1022,7 @@ body.on-landing{padding-bottom:0;}
     <!-- Thread 6 - Locked -->
     <div class="intel-post" data-category="culture">
       <span class="intel-tag">Culture</span>
-      <div class="intel-q">What's the remote work reality at CloudStack? Do managers actually trust remote workers?</div>
+      <div class="intel-q" onclick="openModal('unlock','CloudStack remote culture intel')" style="cursor:pointer;">What's the remote work reality at CloudStack? Do managers actually trust remote workers?</div>
       <div class="intel-meta">6 answers · All verified · 3 days ago</div>
       <div class="intel-locked">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;color:var(--muted)"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -1039,7 +1039,7 @@ body.on-landing{padding-bottom:0;}
 <!-- NOTIFICATIONS -->
 <div id="view-notifications" class="view">
   <div class="card">
-    <div class="section-hdr"><h3>Alerts</h3><span class="more-link">Mark all read</span></div>
+    <div class="section-hdr"><h3>Alerts</h3><span class="more-link" onclick="markAllRead()">Mark all read</span></div>
 
     <div class="activity" style="background:#fef9f9;">
       <div class="notif-dot"></div>
@@ -1177,10 +1177,13 @@ body.on-landing{padding-bottom:0;}
 <!-- SALARY BENCHMARKS -->
 <div id="view-salaries" class="view">
   <div class="card" style="padding:20px;">
-    <h2 style="font-size:20px;font-weight:800;margin:0 0 4px 0;display:flex;align-items:center;gap:8px;">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-      Salary Benchmarks
-    </h2>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+      <button class="btn btn-ghost btn-sm" onclick="goBack()" style="flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
+      <h2 style="font-size:20px;font-weight:800;margin:0;display:flex;align-items:center;gap:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Salary Benchmarks
+      </h2>
+    </div>
     <p style="font-size:13px;color:var(--muted);margin:0 0 16px 0;">Real salary data from verified employees. Updated daily.</p>
     
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;">
@@ -1330,7 +1333,7 @@ body.on-landing{padding-bottom:0;}
     <div class="spotlight-scroll" style="padding:10px 12px 4px;">
       <div class="spotlight-item" onclick="showProfile('sarah')"><div class="sp-av-wrap"><div class="sp-av" style="background:linear-gradient(135deg,#2563eb,#1e40af);">SC</div><div class="sp-check"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg></div></div><div class="spotlight-label">Sarah C.</div></div>
       <div class="spotlight-item" onclick="showProfile('ana')"><div class="sp-av-wrap"><div class="sp-av" style="background:linear-gradient(135deg,#7c3aed,#5b21b6);">AK</div><div class="sp-check"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg></div></div><div class="spotlight-label">Ana K.</div></div>
-      <div class="spotlight-item"><div class="sp-av-wrap"><div class="sp-av" style="background:linear-gradient(135deg,#0891b2,#0e7490);">DP</div><div class="sp-check"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg></div></div><div class="spotlight-label">David P.</div></div>
+      <div class="spotlight-item" onclick="showProfile('david')"><div class="sp-av-wrap"><div class="sp-av" style="background:linear-gradient(135deg,#0891b2,#0e7490);">DP</div><div class="sp-check"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg></div></div><div class="spotlight-label">David P.</div></div>
       <div class="spotlight-item" onclick="showProfile('elena')"><div class="sp-av-wrap"><div class="sp-av" style="background:linear-gradient(135deg,#059669,#047857);">ER</div><div class="sp-check"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg></div></div><div class="spotlight-label">Elena R.</div></div>
       <div class="spotlight-item" onclick="showProfile('thomas')"><div class="sp-av-wrap"><div class="sp-av" style="background:linear-gradient(135deg,#d97706,#b45309);">TN</div><div class="sp-check"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg></div></div><div class="spotlight-label">Thomas N.</div></div>
       <div class="spotlight-item" onclick="showProfile('lara')"><div class="sp-av-wrap"><div class="sp-av" style="background:linear-gradient(135deg,#be185d,#9d174d);">LM</div><div class="sp-check"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg></div></div><div class="spotlight-label">Lara M.</div></div>
@@ -1656,9 +1659,9 @@ let currentView='feed';
 
 function go(v,skipStack){
   // Push to stack unless going back or same view
-  if(!skipStack && v!==currentView && !['profile','company'].includes(currentView)){
+  if(!skipStack && v!==currentView){
     navStack.push(currentView);
-    if(navStack.length>10)navStack.shift(); // Limit stack size
+    if(navStack.length>15)navStack.shift(); // Limit stack size
   }
   currentView=v;
   document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));
@@ -1834,7 +1837,7 @@ function showCompany(key){
   // Similar companies
   const simHtml=(c.similar||[]).slice(0,3).map(sk=>{
     const sc=companies[sk];if(!sc)return'';
-    return `<div class="sim-co-card" onclick="showCompany('${sk}')"><div class="sim-co-logo" style="background:${sc.bg.includes('gradient')?sc.bg:'none;background:'+sc.bg};color:${sc.fgColor};">${sc.init}</div><div class="sim-co-name">${sc.name}</div><div class="sim-co-score">${sc.score} / 10</div></div>`;
+    return `<div class="sim-co-card" onclick="showCompany('${sk}')"><div class="sim-co-logo" style="background:${sc.bg};color:${sc.fgColor};">${sc.init}</div><div class="sim-co-name">${sc.name}</div><div class="sim-co-score">${sc.score} / 10</div></div>`;
   }).join('');
   
   el.innerHTML=`<div class="card">
@@ -1999,7 +2002,7 @@ function filterIntel(category,tabEl){
       post.style.display='none';
     }
   });
-  toast('Showing '+category+' questions');
+  if(category!=='all')toast('Showing '+category+' questions');
 }
 
 // Submit Intel (make visible in feed)
@@ -2015,12 +2018,13 @@ function submitIntelPost(){
   const feedEl=document.querySelector('#view-intel .card');
   const newPost=document.createElement('div');
   newPost.className='intel-post';
+  newPost.dataset.category=category.toLowerCase();
   newPost.style.background='linear-gradient(180deg,#fff9f9,#fff)';
   newPost.innerHTML=`
     <span class="intel-tag">${category}</span>
     <div class="intel-q">${question}</div>
     <div class="intel-meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> 0 answers · Just posted by you</div>
-    <div style="margin-top:8px;"><button class="btn btn-outline btn-xs" onclick="toast('Be the first to answer your own question or wait for insider responses')">Add your answer</button></div>
+    <div style="margin-top:8px;"><button class="btn btn-outline btn-xs" onclick="addIntelAnswer(this.closest('.intel-post'))">Add your answer</button></div>
   `;
   const firstPost=feedEl.querySelector('.intel-post');
   if(firstPost){
@@ -2042,12 +2046,13 @@ function filterNetwork(filter,tabEl){
   }else if(filter==='industry'){
     suggested.style.display='grid';
     pending.style.display='none';
-    // Filter to show only product-related people (Alex is a Product Lead)
+    // Show people in product, engineering, and design (Alex is a Product Lead)
+    const relatedIndustries=['product','engineering','design'];
     document.querySelectorAll('#net-suggested .net-card').forEach(card=>{
       const industry=card.dataset.industry;
-      card.style.display=(industry==='product')?'block':'none';
+      card.style.display=relatedIndustries.includes(industry)?'block':'none';
     });
-    toast('Showing people in Product (your industry)');
+    toast('Showing people in your industry (Product & Engineering)');
   }else{
     suggested.style.display='grid';
     pending.style.display='none';
@@ -2094,26 +2099,26 @@ function toggleFollowCompany(btn,companyName){
   }
 }
 
-// Intel answer/reply (explain: anyone can answer, verified badge shows employment status)
+// Intel answer/reply — opens unlock modal pre-filled for this question
+let _pendingAnswerPost=null;
 function addIntelAnswer(postEl){
-  const answerInput=prompt('Share your insider knowledge (your employment will be verified):');
-  if(!answerInput||!answerInput.trim())return;
-  const answersSection=postEl.querySelector('.intel-answer')?.parentNode;
-  if(!answersSection)return;
-  const newAnswer=document.createElement('div');
-  newAnswer.className='intel-answer';
-  newAnswer.style.marginTop='8px';
-  newAnswer.innerHTML=`
-    <div class="intel-ahdr"><div class="av av24" style="background:linear-gradient(135deg,#C41E3A,#8B0000);">AM</div> <strong>Alex Mercer</strong> — Product Lead, Verity <span class="pill pill-green" style="font-size:9px;">Verified</span></div>
-    ${answerInput.trim()}
-  `;
-  answersSection.appendChild(newAnswer);
-  toast('Answer posted! Others can now see your insider perspective.');
+  _pendingAnswerPost=postEl;
+  const q=postEl.querySelector('.intel-q')?.textContent||'';
+  const desc=q.length>80?q.slice(0,80)+'…':q;
+  // Pre-fill the unlock modal for answering
+  const d=document.getElementById('unlock-desc');
+  if(d)d.textContent='Share your insider knowledge on: '+desc;
+  const ta=document.querySelector('#modal-unlock textarea');
+  if(ta){ta.value='';ta.placeholder='Share your verified insider perspective (min. 50 chars)...';}
+  const unlockBtn=document.querySelector('#modal-unlock .btn-primary');
+  if(unlockBtn)unlockBtn.textContent='Post Answer';
+  openModal('unlock');
 }
 
 // Message functions
 let currentMsgRecipient=null;
 function openMessage(key){
+  if(!profiles[key])key='sarah';
   const p=profiles[key];if(!p)return;
   currentMsgRecipient=key;
   document.getElementById('msg-recipient-av').style.background=p.bg;
@@ -2178,7 +2183,16 @@ function openModal(id,desc){
   const el=document.getElementById('modal-'+id);
   if(!el)return;
   el.classList.add('open');
-  if(id==='unlock'&&desc){const d=document.getElementById('unlock-desc');if(d)d.textContent='Share your experience to unlock insider answers about: '+desc;}
+  if(id==='unlock'){
+    if(desc){const d=document.getElementById('unlock-desc');if(d)d.textContent='Share your experience to unlock insider answers about: '+desc;}
+    // If opened directly (not via addIntelAnswer), clear pending post and reset button
+    if(!_pendingAnswerPost){
+      const btn=document.querySelector('#modal-unlock .btn-primary');
+      if(btn)btn.textContent='Submit & Unlock';
+      const ta=document.querySelector('#modal-unlock textarea');
+      if(ta)ta.placeholder='Be specific about your experience. Generic answers are rejected by our moderation system.';
+    }
+  }
   setTimeout(()=>{const first=el.querySelector('input:not([readonly]),textarea,select');if(first)first.focus();},100);
 }
 function closeModal(id){
@@ -2208,17 +2222,22 @@ function toggleComments(id){
 }
 function toggleAnswers(id){
   const el=document.getElementById(id);if(!el)return;
-  el.classList.toggle('open');
+  const isOpen=el.classList.toggle('open');
   // Update the show-more-btn text
-  const btn=el.previousElementSibling?.nextElementSibling?.querySelector('.show-more-btn')
+  const btn=el.nextElementSibling?.querySelector('.show-more-btn')
     ||el.closest('.intel-post')?.querySelector('.show-more-btn');
-  if(btn){btn.textContent=el.classList.contains('open')?'Hide answers':btn.dataset.label||'Show more answers';}
+  if(btn){
+    if(!btn.dataset.label)btn.dataset.label=btn.textContent; // preserve original count text
+    btn.textContent=isOpen?'Hide answers':btn.dataset.label;
+  }
 }
 function connectBtn(btn){
   if(btn.classList.contains('sent')||btn.classList.contains('connected'))return;
   btn.classList.add('sent');
   btn.innerHTML='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Sent';
   btn.disabled=true;
+  btn.style.borderColor='var(--muted)';
+  btn.style.color='var(--muted)';
   toast('Connection request sent!');
 }
 function postComment(input,sectionId){
@@ -2275,8 +2294,10 @@ function applyJob(btn){
     co=(jobCard.querySelector('.job-co')?.textContent||'').split('·')[0].trim();
   }else{
     title=document.querySelector('#view-job h2')?.textContent||'';
-    const subEl=document.querySelector('#view-job [style*="cursor:pointer"]');
-    co=subEl?(subEl.textContent||'').split('·')[0].trim():'';
+    // Find company name: the element with data-company-link or first cursor:pointer after h2
+    const jobInner=document.querySelector('#view-job .card');
+    const allLinks=jobInner?[...jobInner.querySelectorAll('[onclick*="showCompany"]')]:[];
+    co=allLinks.length>0?(allLinks[0].textContent||'').split('·')[0].trim():'';
   }
   const t=document.getElementById('apply-job-title');
   const c=document.getElementById('apply-company');
@@ -2295,6 +2316,10 @@ function saveJob(btn){
     btn.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="#C41E3A" stroke="#C41E3A" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg> Saved ✓';
     toast('Job saved!');
   }
+  // Update saved tab count
+  const savedCount=document.querySelectorAll('.job-card .btn.saved').length;
+  const savedTab=document.getElementById('jobTabSaved');
+  if(savedTab)savedTab.textContent=savedCount>0?'Saved ('+savedCount+')':'Saved';
 }
 function submitApplication(){
   const cover=document.getElementById('apply-cover')?.value?.trim();
@@ -2322,12 +2347,33 @@ function submitSalary(){
 function submitUnlock(){
   const ta=document.querySelector('#modal-unlock textarea');
   if(!ta||!ta.value.trim()){toast('Please share your experience first');return;}
+  const answerText=ta.value.trim();
   closeModal('unlock');
   ta.value='';
-  // Reveal all hidden answers in the page
-  document.querySelectorAll('.hidden-answers:not(.open)').forEach(el=>{el.classList.add('open');});
-  document.querySelectorAll('.show-more-btn').forEach(el=>{el.textContent='Hide answers';});
-  toast('Answer submitted! Insider answers unlocked.');
+  // Reset the unlock modal button text for future use
+  const unlockBtn=document.querySelector('#modal-unlock .btn-primary');
+  if(unlockBtn)unlockBtn.textContent='Submit & Unlock';
+  const d=document.getElementById('unlock-desc');
+  if(d)d.textContent='Share your experience to unlock insider answers. Your response is anonymized and verified.';
+  if(_pendingAnswerPost){
+    // Adding an answer to a specific intel thread
+    const postEl=_pendingAnswerPost;
+    _pendingAnswerPost=null;
+    const showMoreDiv=postEl.querySelector('[style*="gap:8px"][style*="margin-top"]');
+    const newAnswer=document.createElement('div');
+    newAnswer.className='intel-answer';
+    newAnswer.style.marginTop='8px';
+    newAnswer.innerHTML=`<div class="intel-ahdr"><div class="av av24" style="background:linear-gradient(135deg,#C41E3A,#8B0000);">AM</div> <strong>Alex Mercer</strong> — Product Lead, Verity <span class="pill pill-green" style="font-size:9px;">Verified</span></div>${answerText.replace(/</g,'&lt;').replace(/\n/g,'<br>')}`;
+    const existingAnswers=postEl.querySelector('.intel-answer');
+    if(showMoreDiv)showMoreDiv.parentNode.insertBefore(newAnswer,showMoreDiv);
+    else if(existingAnswers)existingAnswers.parentNode.appendChild(newAnswer);
+    toast('Answer posted! Others can now see your insider perspective.');
+  }else{
+    // Unlocking answers to a locked thread
+    document.querySelectorAll('.hidden-answers:not(.open)').forEach(el=>{el.classList.add('open');});
+    document.querySelectorAll('.show-more-btn').forEach(el=>{el.textContent='Hide answers';});
+    toast('Answer submitted! Insider answers unlocked.');
+  }
 }
 function saveProfile(){
   const name=document.getElementById('edit-name')?.value?.trim();
@@ -2341,6 +2387,14 @@ function saveProfile(){
   if(headline){const sub=document.querySelector('#view-myprofile .profile-sub');if(sub)sub.textContent=headline+(loc?(' · '+loc):'');}
   closeModal('editprofile');
   toast('Profile updated!');
+}
+function markAllRead(){
+  document.querySelectorAll('#view-notifications .notif-dot').forEach(el=>el.remove());
+  document.querySelectorAll('#view-notifications .activity[style*="#fef9f9"]').forEach(el=>el.style.background='');
+  updateNetworkBadge();
+  // Also clear Intel badge
+  [document.querySelector('#nb-intel .nav-badge'),document.querySelector('#bn-intel .bnav-badge')].forEach(el=>{if(el)el.style.display='none';});
+  toast('All alerts marked as read');
 }
 function openShareModal(name,url){
   const desc=document.getElementById('share-desc');
@@ -2377,7 +2431,7 @@ function filterSalaries(){
     const meta=(card.querySelector('.sbc-meta')?.textContent||'').toLowerCase();
     const roleText=(card.querySelector('.sbc-role')?.textContent||'').toLowerCase();
     const locMatch=!loc||meta.includes(loc.toLowerCase().replace('-',' '));
-    const expMatch=!exp;// static data — show all by default when filtered
+    const expMatch=true;// static benchmark cards — no exp metadata to filter on
     let roleMatch=true;
     if(role==='pm')roleMatch=roleText.includes('product')||roleText.includes('pm');
     else if(role==='eng')roleMatch=roleText.includes('engineer')||roleText.includes('dev')||roleText.includes('front');
@@ -2390,6 +2444,15 @@ function filterSalaries(){
 }
 
 // ── NOTIFICATIONS ──
+function updateNetworkBadge(){
+  // Count remaining unread connection requests in notifications
+  const remaining=document.querySelectorAll('#view-notifications .notif-dot').length;
+  [document.querySelector('#nb-network .nav-badge'),document.querySelector('#bn-network .bnav-badge')].forEach(el=>{
+    if(!el)return;
+    if(remaining>0){el.textContent=remaining;el.style.display='';}
+    else{el.style.display='none';}
+  });
+}
 function acceptConnection(btn,name){
   const activity=btn.closest('.activity');
   if(activity){
@@ -2398,11 +2461,16 @@ function acceptConnection(btn,name){
     const actionRow=btn.closest('[style*="gap:8px"]');
     if(actionRow){actionRow.outerHTML=`<div class="pill pill-green" style="margin-top:4px;font-size:11px;">✓ Connected with ${name}</div>`;}
   }
+  updateNetworkBadge();
   toast('Connected with '+name+'!');
 }
 function ignoreRequest(btn){
   const activity=btn.closest('.activity');
-  if(activity){activity.style.opacity='0';activity.style.transition='opacity .3s';setTimeout(()=>activity.remove(),300);}
+  if(activity){
+    activity.querySelector('.notif-dot')?.remove();
+    activity.style.opacity='0';activity.style.transition='opacity .3s';
+    setTimeout(()=>{activity.remove();updateNetworkBadge();},300);
+  }
   toast('Request dismissed');
 }
 
@@ -2436,13 +2504,54 @@ const groups={
     tab.addEventListener('click',function(){
       document.querySelectorAll('#feedTabs .ftab').forEach(t=>t.classList.remove('active'));
       this.classList.add('active');
-      toast('Showing: '+this.textContent);
+      const txt=this.textContent.trim();
+      const posts=document.querySelectorAll('#feed-posts .feed-post');
+      if(txt==='Following'){
+        // Show only posts from people you follow (Following button state)
+        let shown=0;
+        posts.forEach(post=>{
+          const followBtn=post.querySelector('.btn.following');
+          if(followBtn){post.style.display='block';shown++;}
+          else post.style.display='none';
+        });
+        if(shown===0)toast('Follow people to see their posts here');
+        else toast('Showing '+shown+' posts from people you follow');
+      }else if(txt==='Top this week'){
+        posts.forEach(post=>{post.style.display='block';});
+        toast('Showing highest-engagement posts this week');
+      }else{
+        posts.forEach(post=>{post.style.display='block';});
+      }
     });
   });
   document.getElementById('jobTabs')?.querySelectorAll('.ftab').forEach(tab=>{
     tab.addEventListener('click',function(){
       document.querySelectorAll('#jobTabs .ftab').forEach(t=>t.classList.remove('active'));
       this.classList.add('active');
+      const txt=this.textContent.trim();
+      const cards=document.querySelectorAll('.job-card');
+      if(txt==='Top cultures'){
+        // Show only high-score companies (8+)
+        cards.forEach(card=>{
+          const pill=card.querySelector('.pill-green');
+          const score=pill?parseFloat(pill.textContent)||0:0;
+          card.style.display=score>=8.4?'block':'none';
+        });
+        toast('Showing jobs at top-rated companies (8.4+)');
+      }else if(txt.includes('Saved')){
+        // Show only saved jobs
+        let savedCount=0;
+        cards.forEach(card=>{
+          const isSaved=card.querySelector('.btn.saved');
+          if(isSaved){card.style.display='block';savedCount++;}
+          else card.style.display='none';
+        });
+        if(savedCount===0)toast('No saved jobs yet — save jobs with the bookmark icon');
+        else toast('Showing '+savedCount+' saved job'+(savedCount===1?'':'s'));
+      }else{
+        // For you — show all
+        cards.forEach(card=>{card.style.display='block';card.style.background='';});
+      }
     });
   });
 })();
