@@ -1014,7 +1014,7 @@ body.on-landing{padding-bottom:0;}
         <div style="flex:1;">
           <div style="font-weight:700;margin-bottom:4px;color:var(--text);">8 insider answers locked</div>
           <div style="margin-bottom:10px;">Share one interview experience to unlock all answers.</div>
-          <button class="unlock-btn" onclick="openModal('unlock','GrowthLabs interview intel')">Contribute to Unlock</button>
+          <button class="unlock-btn" onclick="addIntelAnswer(this.closest('.intel-post'))">Contribute to Unlock</button>
         </div>
       </div>
     </div>
@@ -1047,7 +1047,7 @@ body.on-landing{padding-bottom:0;}
         <div style="flex:1;">
           <div style="font-weight:700;margin-bottom:4px;color:var(--text);">6 insider answers locked</div>
           <div style="margin-bottom:10px;">Share your remote work experience to unlock all answers.</div>
-          <button class="unlock-btn" onclick="openModal('unlock','CloudStack remote culture intel')">Contribute to Unlock</button>
+          <button class="unlock-btn" onclick="addIntelAnswer(this.closest('.intel-post'))">Contribute to Unlock</button>
         </div>
       </div>
     </div>
@@ -1709,7 +1709,11 @@ function showProfile(key){
   const warnBanner=parseFloat(p.score)<3.5?`<div style="background:var(--red-light);border:1px solid var(--red);border-radius:6px;padding:10px 12px;margin:12px 16px;font-size:12px;"><strong style="color:var(--red);">⚠ Low Verity Score.</strong> This profile has manager ratings below 3.5. Read Intel threads before engaging.</div>`:'';
   const openBadge=p.open?`<span class="pill pill-green" style="font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 8 12 12 14 14"/></svg>Open to Work</span>`:'';
   const verBadge=p.verified?`<span class="pill pill-green" style="font-size:10px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Verified</span>`:'';
-  const rolesHtml=p.roles.map(r=>`<div class="exp-item"><div class="exp-logo" style="background:${r.bg};">${r.init}</div><div><div class="exp-co">${r.co}</div><div class="exp-role">${r.role}</div><div class="exp-dates">${r.dates}</div>${r.verified?'<div class="exp-vbadge"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Work email verified</div>':''}</div></div>`).join('');
+  const rolesHtml=p.roles.map(r=>{
+    const coKey=Object.entries(companies).find(([,c])=>c.name===r.co)?.[0];
+    const coClick=coKey?`onclick="showCompany('${coKey}')" `:'';
+    return `<div class="exp-item"><div class="exp-logo" style="background:${r.bg};${coKey?'cursor:pointer;':''}" ${coClick}>${r.init}</div><div><div class="exp-co" ${coClick}style="cursor:${coKey?'pointer':'default'};">${r.co}</div><div class="exp-role">${r.role}</div><div class="exp-dates">${r.dates}</div>${r.verified?'<div class="exp-vbadge"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Work email verified</div>':''}</div></div>`;
+  }).join('');
   const ratingNames=['Communication','Team development','Decision making','Psych safety'];
   const ratingKeys=['comm','dev','dec','psych'];
   const ratingsHtml=ratingKeys.map((k,i)=>{
@@ -2027,10 +2031,11 @@ function filterIntel(category,tabEl){
 function submitIntelPost(){
   const input=document.querySelector('#modal-intel input');
   const categorySelect=document.querySelector('#modal-intel select');
-  if(!input||!input.value.trim()){closeModal('intel');toast('Please enter a question');return;}
+  if(!input||!input.value.trim()){toast('Please enter a question');return;}
   const question=input.value.trim();
   const category=categorySelect?categorySelect.value:'Culture';
   input.value='';
+  if(categorySelect)categorySelect.selectedIndex=0;
   closeModal('intel');
   // Add the new question to the intel feed with category
   const feedEl=document.querySelector('#view-intel .card');
@@ -2086,16 +2091,35 @@ function showCompanyJobs(companyKey){
   setTimeout(()=>{
     const company=companies[companyKey];
     if(!company)return;
+    let found=0;
     document.querySelectorAll('.job-card').forEach(card=>{
       const coName=card.querySelector('.job-co')?.textContent||'';
       if(coName.toLowerCase().includes(company.name.toLowerCase())){
         card.style.display='block';
         card.style.background='linear-gradient(180deg,#f0fdf4,#fff)';
+        found++;
       }else{
         card.style.display='none';
       }
     });
-    toast('Showing jobs at '+company.name);
+    // Show/hide warning banner for StartupHub
+    const warnBanner=document.querySelector('#view-jobs .card [onclick*="startuphub"]');
+    if(warnBanner)warnBanner.style.display=companyKey==='startuphub'?'':'none';
+    // Empty state
+    const jobsCard=document.querySelector('#view-jobs .card');
+    const existingEmpty=document.getElementById('jobs-empty-state');
+    if(existingEmpty)existingEmpty.remove();
+    if(found===0){
+      const empty=document.createElement('div');
+      empty.id='jobs-empty-state';
+      empty.style.cssText='padding:32px;text-align:center;font-size:13px;color:var(--muted);';
+      empty.innerHTML=`<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" style="margin-bottom:12px;"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg><br>No open roles at ${company.name} right now.<br><span style="color:var(--red);font-weight:600;cursor:pointer;" onclick="go('intel')">Ask insiders in Intel Exchange →</span>`;
+      if(jobsCard)jobsCard.appendChild(empty);
+    }
+    // Reset jobs tab to "For you" style
+    document.querySelectorAll('#jobTabs .ftab').forEach(t=>t.classList.remove('active'));
+    document.querySelector('#jobTabs .ftab')?.classList.add('active');
+    toast('Showing jobs at '+company.name+(found===0?' (none found)':''));
   },100);
 }
 
@@ -2264,8 +2288,14 @@ function connectBtn(btn){
   btn.classList.add('sent');
   btn.innerHTML='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Sent';
   btn.disabled=true;
+  // Handle both btn-connect (outline) and btn-primary (filled) styles
+  if(btn.classList.contains('btn-primary')){
+    btn.classList.remove('btn-primary');
+    btn.classList.add('btn-ghost');
+  }
   btn.style.borderColor='var(--muted)';
   btn.style.color='var(--muted)';
+  btn.style.background='transparent';
   toast('Connection request sent!');
 }
 function postComment(input,sectionId){
@@ -2309,7 +2339,8 @@ function submitPost(){
   const firstPost=feedEl.querySelector('.feed-post');
   if(firstPost)feedEl.insertBefore(newPost,firstPost);
   ta.value='';
-  toast('Post published!');
+  if(sel)sel.selectedIndex=0;
+  toast('Post published! Your network can see it now.');
 }
 
 // ── JOBS ──
@@ -2344,8 +2375,8 @@ function saveJob(btn){
     btn.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="#C41E3A" stroke="#C41E3A" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg> Saved ✓';
     toast('Job saved!');
   }
-  // Update saved tab count
-  const savedCount=document.querySelectorAll('.job-card .btn.saved').length;
+  // Update saved tab count (check both job cards and detail view)
+  const savedCount=document.querySelectorAll('.job-card .btn.saved, #view-job .btn.saved').length;
   const savedTab=document.getElementById('jobTabSaved');
   if(savedTab)savedTab.textContent=savedCount>0?'Saved ('+savedCount+')':'Saved';
 }
@@ -2376,28 +2407,45 @@ function submitUnlock(){
   const ta=document.querySelector('#modal-unlock textarea');
   if(!ta||!ta.value.trim()){toast('Please share your experience first');return;}
   const answerText=ta.value.trim();
+  const pendingPost=_pendingAnswerPost; // Save ref BEFORE closeModal nullifies it
   closeModal('unlock');
   ta.value='';
-  // Reset the unlock modal button text for future use
-  const unlockBtn=document.querySelector('#modal-unlock .btn-primary');
-  if(unlockBtn)unlockBtn.textContent='Submit & Unlock';
-  const d=document.getElementById('unlock-desc');
-  if(d)d.textContent='Share your experience to unlock insider answers. Your response is anonymized and verified.';
-  if(_pendingAnswerPost){
+  if(pendingPost){
     // Adding an answer to a specific intel thread
-    const postEl=_pendingAnswerPost;
-    _pendingAnswerPost=null;
-    const showMoreDiv=postEl.querySelector('[style*="gap:8px"][style*="margin-top"]');
+    const postEl=pendingPost;
     const newAnswer=document.createElement('div');
     newAnswer.className='intel-answer';
     newAnswer.style.marginTop='8px';
     newAnswer.innerHTML=`<div class="intel-ahdr"><div class="av av24" style="background:linear-gradient(135deg,#C41E3A,#8B0000);">AM</div> <strong>Alex Mercer</strong> — Product Lead, Verity <span class="pill pill-green" style="font-size:9px;">Verified</span></div>${answerText.replace(/</g,'&lt;').replace(/\n/g,'<br>')}`;
-    const existingAnswers=postEl.querySelector('.intel-answer');
-    if(showMoreDiv)showMoreDiv.parentNode.insertBefore(newAnswer,showMoreDiv);
-    else if(existingAnswers)existingAnswers.parentNode.appendChild(newAnswer);
-    toast('Answer posted! Others can now see your insider perspective.');
+
+    // Check if this is a locked thread — replace the lock with real answers
+    const lockedEl=postEl.querySelector('.intel-locked');
+    if(lockedEl){
+      // Replace lock UI with unlocked answers
+      const unlockedDiv=document.createElement('div');
+      unlockedDiv.className='intel-answer';
+      unlockedDiv.style.marginTop='8px';
+      unlockedDiv.innerHTML=`<div class="intel-ahdr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" style="display:inline;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> <strong style="color:var(--green);">Unlocked — 7 insider answers now visible</strong></div>You contributed, so you can now see all verified answers. Thank you for sharing your experience.`;
+      lockedEl.replaceWith(unlockedDiv);
+      // Also update the meta count
+      const metaEl=postEl.querySelector('.intel-meta');
+      if(metaEl)metaEl.innerHTML=metaEl.innerHTML.replace(/\d+ answers/,c=>c.replace(/\d+/,n=>parseInt(n)+1));
+      // Add a follow-up with answers  
+      const followDiv=document.createElement('div');
+      followDiv.innerHTML=`<div class="intel-answer" style="margin-top:8px;"><div class="intel-ahdr"><div class="av av24" style="background:linear-gradient(135deg,#7c3aed,#5b21b6);">AN</div> <strong>Anonymous</strong> — Verified insider <span class="pill pill-green" style="font-size:9px;">Verified</span></div>They asked real questions about past projects, not hypotheticals. The process was structured but felt human. Interviewer was prepared and asked follow-ups based on my answers.</div>`;
+      unlockedDiv.after(followDiv.firstElementChild);
+      unlockedDiv.after(newAnswer);
+      toast('Answered! You\'ve unlocked all insider intel on this thread.');
+    } else {
+      // Already unlocked thread — just add the answer
+      const showMoreDiv=postEl.querySelector('[style*="gap:8px"][style*="margin-top"]');
+      const existingAnswers=postEl.querySelector('.intel-answer');
+      if(showMoreDiv)showMoreDiv.parentNode.insertBefore(newAnswer,showMoreDiv);
+      else if(existingAnswers)existingAnswers.parentNode.appendChild(newAnswer);
+      toast('Answer posted! Others can now see your insider perspective.');
+    }
   }else{
-    // Unlocking answers to a locked thread
+    // Fallback: expand all hidden answer sections
     document.querySelectorAll('.hidden-answers:not(.open)').forEach(el=>{el.classList.add('open');});
     document.querySelectorAll('.show-more-btn').forEach(el=>{el.textContent='Hide answers';});
     toast('Answer submitted! Insider answers unlocked.');
