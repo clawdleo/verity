@@ -498,9 +498,9 @@ body.on-landing{padding-bottom:0;}
     <a class="nav-btn" id="nb-network" onclick="go('network')" aria-label="My Network - 3 pending" tabindex="0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Network</span><span class="nav-badge" aria-label="3 pending requests">3</span></a>
     <a class="nav-btn" id="nb-jobs" onclick="go('jobs')" aria-label="Jobs" tabindex="0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg><span>Jobs</span></a>
     <a class="nav-btn" id="nb-intel" onclick="go('intel')" aria-label="Intel Exchange - 7 new" tabindex="0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Intel</span><span class="nav-badge" aria-label="7 new">7</span></a>
-    <a class="nav-btn" id="nb-notif" onclick="go('notifications')" aria-label="Notifications" tabindex="0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span>Alerts</span></a>
+    <a class="nav-btn" id="nb-notifications" onclick="go('notifications')" aria-label="Notifications" tabindex="0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span>Alerts</span></a>
     <div class="nav-divider" style="height:32px;margin:0 4px;"></div>
-    <a class="nav-btn" id="nb-me" onclick="go('myprofile')" style="min-width:56px;"><div class="nav-me-av">AM</div><span>Me <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span></a>
+    <a class="nav-btn" id="nb-myprofile" onclick="go('myprofile')" style="min-width:56px;"><div class="nav-me-av">AM</div><span>Me <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span></a>
   </div>
 </nav>
 
@@ -510,7 +510,7 @@ body.on-landing{padding-bottom:0;}
   <div class="bnav-btn" id="bn-network" onclick="go('network')" role="button" tabindex="0" aria-label="My Network"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Network</span><span class="bnav-badge" aria-hidden="true">3</span></div>
   <div class="bnav-btn" id="bn-jobs" onclick="go('jobs')" role="button" tabindex="0" aria-label="Jobs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg><span>Jobs</span></div>
   <div class="bnav-btn" id="bn-intel" onclick="go('intel')" role="button" tabindex="0" aria-label="Intel Exchange"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Intel</span><span class="bnav-badge" aria-hidden="true">7</span></div>
-  <div class="bnav-btn" id="bn-me" onclick="go('myprofile')" role="button" tabindex="0" aria-label="My Profile"><div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#C41E3A,#8B0000);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff;">AM</div><span>Me</span></div>
+  <div class="bnav-btn" id="bn-myprofile" onclick="go('myprofile')" role="button" tabindex="0" aria-label="My Profile"><div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#C41E3A,#8B0000);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff;">AM</div><span>Me</span></div>
 </nav>
 
 <!-- ══ LAYOUT ══ -->
@@ -984,6 +984,24 @@ body.on-landing{padding-bottom:0;}
         </div>
       </div>
       <div style="display:flex;gap:8px;margin-top:8px;"><div class="show-more-btn" onclick="toggleAnswers('ia3')">Show 20 more answers</div><button class="btn btn-outline btn-xs" onclick="addIntelAnswer(this.closest('.intel-post'))">Add your answer</button></div>
+    </div>
+
+    <!-- Thread 3b - Management -->
+    <div class="intel-post" data-category="management">
+      <span class="intel-tag">Management</span>
+      <div class="intel-q" onclick="toggleAnswers('ia3b')">How does the performance management process actually work at GrowthLabs? Is the annual review system fair?</div>
+      <div class="intel-meta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> 7 answers · All verified · 8 hours ago</div>
+      <div class="intel-answer">
+        <div class="intel-ahdr"><div class="av av24" style="background:linear-gradient(135deg,#0e7490,#164e63);">ZA</div> <strong>Zara Ahmed</strong> — Data Scientist, 18 months <span class="pill pill-green" style="font-size:9px;">Verified</span></div>
+        Reviews are quarterly, not annual. You set OKRs with your manager, mid-quarter check-in, end-of-quarter review against actual outcomes. Ratings are calibrated across the team, not unilateral manager decisions. No surprises.
+      </div>
+      <div id="ia3b" class="hidden-answers">
+        <div class="intel-answer" style="margin-top:8px;">
+          <div class="intel-ahdr"><div class="av av24" style="background:linear-gradient(135deg,#7c3aed,#5b21b6);">AK</div> <strong>Ana Kowalski</strong> — Marketing Director, 4 years <span class="pill pill-green" style="font-size:9px;">Verified</span></div>
+          As a manager myself — the calibration sessions actually prevent grade inflation. You have to defend every rating to your peers. It keeps things honest. First company I've seen do this properly.
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:8px;"><div class="show-more-btn" onclick="toggleAnswers('ia3b')">Show 5 more answers</div><button class="btn btn-outline btn-xs" onclick="addIntelAnswer(this.closest('.intel-post'))">Add your answer</button></div>
     </div>
 
     <!-- Thread 4 - Locked -->
@@ -1654,8 +1672,8 @@ function renderStars(val,container){if(!container)return;let h='';for(let i=1;i<
 function initStars(){['rs-comm','rs-dev','rs-dec','rs-psych'].forEach((id,i)=>{let el=document.getElementById(id);if(el)renderStars([4.8,4.6,4.7,4.9][i],el);});}
 
 // Navigation stack for back button
-let navStack=['feed'];
-let currentView='feed';
+let navStack=[];
+let currentView='landing';
 
 function go(v,skipStack){
   // Push to stack unless going back or same view
@@ -2198,6 +2216,16 @@ function openModal(id,desc){
 function closeModal(id){
   const el=document.getElementById('modal-'+id);
   if(el)el.classList.remove('open');
+  // Reset pending intel answer state when unlock modal is closed
+  if(id==='unlock'){
+    _pendingAnswerPost=null;
+    const btn=document.querySelector('#modal-unlock .btn-primary');
+    if(btn)btn.textContent='Submit & Unlock';
+    const ta=document.querySelector('#modal-unlock textarea');
+    if(ta)ta.placeholder='Be specific about your experience. Generic answers are rejected by our moderation system.';
+    const d=document.getElementById('unlock-desc');
+    if(d)d.textContent='Share your experience to unlock insider answers. Your response is anonymized and verified.';
+  }
 }
 
 // ── FEED INTERACTIONS ──
@@ -2537,6 +2565,9 @@ const groups={
           const score=pill?parseFloat(pill.textContent)||0:0;
           card.style.display=score>=8.4?'block':'none';
         });
+        // Hide the StartupHub warning banner when filtering top cultures
+        const warnBanner=document.querySelector('#view-jobs .card [onclick*="startuphub"]');
+        if(warnBanner)warnBanner.style.display='none';
         toast('Showing jobs at top-rated companies (8.4+)');
       }else if(txt.includes('Saved')){
         // Show only saved jobs
@@ -2551,6 +2582,9 @@ const groups={
       }else{
         // For you — show all
         cards.forEach(card=>{card.style.display='block';card.style.background='';});
+        // Restore warning banner
+        const warnBanner=document.querySelector('#view-jobs .card [onclick*="startuphub"]');
+        if(warnBanner)warnBanner.style.display='';
       }
     });
   });
@@ -2572,6 +2606,8 @@ document.addEventListener('keydown',e=>{
 
 // Init
 initStars();
+// Save original search dropdown HTML for restoration
+(function(){const d=document.getElementById('sDrop');if(d)d._original=d.innerHTML;})();
 // Start on landing page
 document.body.classList.add('on-landing');
 </script>
